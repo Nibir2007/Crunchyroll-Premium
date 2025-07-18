@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CrunchyStore - Ultimate Anime World</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <style>
     :root {
       --orange: #f97316;
@@ -19,9 +22,6 @@
       --blue: #60a5fa;
       --bg-gradient: linear-gradient(to bottom right, #ffedd5, #fef3c7, #fce7f3);
     }
-    * {
-      box-sizing: border-box;
-    }
     body {
       margin: 0;
       font-family: 'Jost', sans-serif;
@@ -31,65 +31,124 @@
     }
     header {
       background: linear-gradient(to right, var(--orange), var(--pink));
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: white;
       font-family: 'Orbitron', sans-serif;
       text-shadow: 2px 2px #00000020;
       animation: glow 2s infinite alternate;
+      z-index: 10;
+      position: relative;
     }
     @keyframes glow {
-      from { text-shadow: 0 0 10px #ff9f43; }
-      to { text-shadow: 0 0 30px #fb923c; }
+      from {
+        text-shadow: 0 0 10px #ff9f43;
+      }
+      to {
+        text-shadow: 0 0 30px #fb923c;
+      }
     }
     .hero {
+      position: relative;
       text-align: center;
-      padding: 60px 20px;
-      background: url('https://i.ibb.co/4F7v3Qz/anime-bg-loop.gif') center/cover no-repeat;
-      background-attachment: fixed;
+      padding: 100px 20px 80px;
       color: white;
-      animation: fadeIn 2s ease-in-out;
+      overflow: hidden;
+    }
+    /* Video background */
+    .hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      filter: brightness(0.5) saturate(1.2);
     }
     .hero h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: #fff7ed;
       text-shadow: 2px 2px var(--yellow);
+      margin-bottom: 15px;
+      z-index: 5;
+      position: relative;
     }
     .hero p {
       max-width: 600px;
-      margin: 20px auto;
+      margin: 0 auto 25px;
       font-size: 1.2rem;
       color: #fef3c7;
+      z-index: 5;
+      position: relative;
     }
     .btn {
       display: inline-block;
       background: linear-gradient(135deg, var(--orange), var(--pink));
       color: white;
-      padding: 12px 24px;
+      padding: 14px 28px;
       border-radius: 20px;
-      font-size: 1rem;
+      font-size: 1.1rem;
       text-decoration: none;
       margin-top: 20px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
       transition: all 0.4s ease;
       animation: pulse 1.6s infinite;
+      z-index: 5;
+      position: relative;
     }
     .btn:hover {
       transform: scale(1.05);
       background: linear-gradient(135deg, var(--purple), var(--blue));
     }
     @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 10px #f97316; }
-      50% { transform: scale(1.05); box-shadow: 0 0 25px #f97316; }
-      100% { transform: scale(1); box-shadow: 0 0 10px #f97316; }
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px #f97316;
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px #f97316;
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px #f97316;
+      }
+    }
+    .swiper {
+      width: 100%;
+      padding: 40px 0;
+    }
+    .swiper-slide {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    .swiper-slide:hover {
+      transform: rotateY(10deg) scale(1.05);
+      box-shadow: 0 0 20px var(--purple);
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    .plans,
+    .features {
+      padding: 50px 20px;
     }
     .plans {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 25px;
-      padding: 50px 20px;
       background: linear-gradient(to bottom left, #fff7ed, #ffe4e6);
     }
     .card {
@@ -99,27 +158,15 @@
       width: 300px;
       text-align: center;
       padding: 25px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
     }
     .card:hover {
       transform: scale(1.08);
       box-shadow: 0 10px 28px rgba(255, 64, 129, 0.3);
     }
-    .card h2 {
-      color: var(--orange-dark);
-      font-size: 1.8rem;
-    }
-    .card ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 15px;
-      color: #4b5563;
-      font-size: 1rem;
-    }
     .features {
       background: linear-gradient(to bottom right, #fefce8, #ede9fe);
-      padding: 60px 20px;
       text-align: center;
     }
     .features h2 {
@@ -140,7 +187,7 @@
       border-radius: 16px;
       width: 250px;
       padding: 25px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s ease;
     }
     .feature:hover {
@@ -151,107 +198,131 @@
       color: var(--purple);
       margin-bottom: 10px;
     }
-    .carousel {
-      padding: 50px 0;
-      background: linear-gradient(to top, #fde68a, #fbcfe8);
-    }
-    .carousel h2 {
-      text-align: center;
-      font-size: 2rem;
-      color: var(--orange-dark);
-      margin-bottom: 30px;
-    }
-    .swiper-container {
-      width: 90%;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .swiper-slide {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .swiper-slide img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .swiper-slide p {
-      padding: 10px;
-      font-weight: bold;
-    }
     .mascot {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 100px;
+      width: 120px;
       z-index: 1000;
       animation: floaty 4s ease-in-out infinite;
     }
     @keyframes floaty {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
-      100% { transform: translateY(0) rotate(0deg); }
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
     }
     footer {
       background: linear-gradient(to right, var(--orange-dark), var(--pink));
       color: white;
       text-align: center;
       padding: 40px 20px;
-    }
-    footer p {
-      margin: 5px;
+      font-size: 0.9rem;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+    .audio-player {
+      position: fixed;
+      left: 20px;
+      bottom: 20px;
+      background: white;
+      border-radius: 30px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+    }
+    .audio-player audio {
+      width: 200px;
+    }
+    /* Responsive */
     @media (max-width: 600px) {
       .hero h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       .btn {
-        font-size: 0.9rem;
-        padding: 10px 18px;
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+      .swiper-slide img {
+        height: 200px;
+      }
+      .card {
+        width: 90%;
+      }
+      .features-grid {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
   <header>🍥 CrunchyStore - Your Ultimate Anime World!</header>
+
   <section class="hero">
+    <video autoplay muted loop playsinline>
+      <source
+        src="https://cdn.pixabay.com/vimeo/659142133/Anime%20Aesthetic%20Loop%20-%2026193.mp4?width=1280&hash=7971b9bbdb3a16d41b15a7df83a7421a4d88729e"
+        type="video/mp4"
+      />
+      Sorry, your browser does not support the video tag.
+    </video>
     <h1>UNLIMITED ANIME. 1 SUBSCRIPTION. 🔥</h1>
-    <p>Watch simulcasts fresh from Japan, access exclusive anime, stream in HD and join the otaku revolution.</p>
-    <a href="#plans" class="btn"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+    <p>
+      Watch simulcasts fresh from Japan, access exclusive anime, stream in HD
+      and join the otaku revolution.
+    </p>
+    <a href="#plans" class="btn"
+      ><i class="fas fa-shopping-cart"></i> Buy Now</a
+    >
   </section>
 
-  <section class="carousel">
-    <h2>🔥 Trending Anime</h2>
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <img src="https://i.ibb.co/hVFKZRB/demon-slayer.jpg" alt="Demon Slayer">
-          <p>Demon Slayer</p>
-        </div>
-        <div class="swiper-slide">
-          <img src="https://i.ibb.co/wK4Wbbp/jujutsu-kaisen.jpg" alt="Jujutsu Kaisen">
-          <p>Jujutsu Kaisen</p>
-        </div>
-        <div class="swiper-slide">
-          <img src="https://i.ibb.co/VVCps5K/attack-titan.jpg" alt="Attack on Titan">
-          <p>Attack on Titan</p>
-        </div>
-        <div class="swiper-slide">
-          <img src="https://i.ibb.co/gstTfdV/one-piece.jpg" alt="One Piece">
-          <p>One Piece</p>
-        </div>
+  <section class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img
+          src="https://cdn.myanimelist.net/images/anime/1958/138005.jpg"
+          alt="Solo Leveling"
+        />
+      </div>
+      <div class="swiper-slide">
+        <img
+          src="https://cdn.myanimelist.net/images/anime/1517/110458.jpg"
+          alt="Demon Slayer"
+        />
+      </div>
+      <div class="swiper-slide">
+        <img
+          src="https://cdn.myanimelist.net/images/anime/1208/94745.jpg"
+          alt="Attack on Titan"
+        />
+      </div>
+      <div class="swiper-slide">
+        <img
+          src="https://cdn.myanimelist.net/images/anime/5/87048.jpg"
+          alt="My Hero Academia"
+        />
       </div>
     </div>
   </section>
 
-  <section id="plans" class="plans" data-aos="fade-up">
+  <section id="plans" class="plans">
     <div class="card">
       <h2>Monthly Plan</h2>
       <p class="price">$6.99</p>
@@ -310,14 +381,26 @@
     <p>&copy; 2025 CrunchyStore. All rights reserved.</p>
   </footer>
 
-  <img src="https://i.ibb.co/7Gfr3s7/chibi-mascot.png" alt="Chibi Mascot" class="mascot">
+  <img
+    src="https://raw.githubusercontent.com/OpenAI/chatgpt-chat/main/assets/chibi-mascot.png"
+    alt="Chibi Mascot"
+    class="mascot"
+  />
+
+  <div class="audio-player">
+    <i class="fas fa-music"></i>
+    <audio controls loop>
+      <source src="https://files.catbox.moe/qjngbj.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script>
     AOS.init();
-    var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 1.5,
+    new Swiper('.mySwiper', {
+      slidesPerView: 1.2,
       spaceBetween: 20,
       loop: true,
       autoplay: {
@@ -325,12 +408,8 @@
         disableOnInteraction: false,
       },
       breakpoints: {
-        640: {
-          slidesPerView: 2.5,
-        },
-        1024: {
-          slidesPerView: 3.5,
-        },
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
       },
     });
   </script>
