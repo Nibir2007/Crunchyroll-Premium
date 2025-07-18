@@ -2,8 +2,8 @@
 session_start();
 
 // Hardcoded credentials (change as needed)
-$correct_username = "adminnihan";
-$correct_password = "superSecure123"; // Change this to your real password
+$correct_username = "admin";
+$correct_password = "admin"; // Change this to your real password
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"] ?? "";
