@@ -2,246 +2,328 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crunchyroll Premium - Anime Deals</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CrunchyStore - Buy Crunchyroll Premium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Jost:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --neon-pink: #ff00cc;
-      --neon-blue: #00ffff;
-      --neon-purple: #9f00ff;
-      --bg-dark: #0d0d1a;
-      --card-dark: #1e1e2f;
+      --orange: #f97316;
+      --pink: #f472b6;
+      --purple: #c084fc;
+      --yellow: #fde047;
+      --bg: linear-gradient(135deg, #fff7ed, #ffe4e6);
     }
 
     * {
-      margin: 0;
-      padding: 0;
       box-sizing: border-box;
-      font-family: 'Quicksand', sans-serif;
     }
 
     body {
-      background: var(--bg-dark);
-      color: #fff;
-      scroll-behavior: smooth;
+      margin: 0;
+      font-family: 'Jost', sans-serif;
+      background: var(--bg);
+      color: #1f2937;
+      overflow-x: hidden;
     }
 
     header {
-      background: linear-gradient(135deg, #ff00cc, #3333ff);
-      background-size: 300% 300%;
-      animation: pulseBG 10s ease infinite;
-      height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(to right, var(--orange), var(--pink));
+      padding: 25px;
       text-align: center;
+      font-size: 2.5rem;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      text-shadow: 2px 2px 8px #00000040;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px #f59e0b;
+      }
+      100% {
+        text-shadow: 0 0 30px #fb923c;
+      }
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
       padding: 20px;
     }
 
-    @keyframes pulseBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    header h1 {
-      font-size: 3em;
-      color: #fff;
-      text-shadow: 0 0 15px #ff00cc;
-    }
-
-    header p {
-      font-size: 1.2em;
-      margin-top: 10px;
-      color: #fff;
-      text-shadow: 0 0 8px #00ffff;
-    }
-
-    .btn {
-      margin-top: 25px;
-      background: linear-gradient(45deg, #00ffff, #ff00cc);
-      padding: 12px 25px;
-      border-radius: 40px;
-      color: #111;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 0 15px #00ffff;
-      transition: transform 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px #ff00cc;
-    }
-
-    section#plans {
-      padding: 60px 20px;
-      background: #131324;
-    }
-
-    section#plans h2 {
+    h2 {
       text-align: center;
-      font-size: 2.2em;
-      color: var(--neon-blue);
-      margin-bottom: 40px;
+      font-size: 2rem;
+      color: var(--pink);
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 30px;
     }
 
-    .plans-container {
+    .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      max-width: 1200px;
-      margin: auto;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
     }
 
-    .plan-card {
-      background: var(--card-dark);
+    .product-card {
+      background: white;
       border-radius: 20px;
-      padding: 25px;
-      border: 2px solid var(--neon-purple);
-      position: relative;
-      box-shadow: 0 0 15px #9f00ff70;
-      overflow: hidden;
-      transition: transform 0.4s ease;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .plan-card:hover {
-      transform: rotateY(3deg) scale(1.05);
-      box-shadow: 0 0 30px #ff00ccaa;
+    .product-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px var(--pink);
     }
 
-    .plan-title {
-      font-size: 1.4em;
-      color: #fff;
-      margin-bottom: 10px;
-      text-shadow: 0 0 6px var(--neon-pink);
-    }
-
-    .plan-price {
-      font-size: 1.1em;
-      color: var(--neon-blue);
-      margin-bottom: 15px;
-    }
-
-    .plan-description {
-      font-size: 0.95em;
-      color: #ccc;
-      margin-bottom: 20px;
-    }
-
-    .plan-card .btn {
-      background: linear-gradient(45deg, #00ffff, #ff00cc);
-      color: #111;
-      padding: 10px 20px;
-      font-size: 0.95em;
-    }
-
-    .contact-section {
-      background: #0f0f1f;
+    .product-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--purple);
       text-align: center;
-      padding: 60px 20px;
+      margin-bottom: 10px;
     }
 
-    .contact-section h2 {
-      font-size: 2em;
-      color: var(--neon-pink);
+    .product-desc {
+      text-align: center;
+      color: #444;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .product-validity {
+      text-align: center;
+      color: var(--pink);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      text-align: center;
+      color: var(--orange);
+      font-weight: 900;
+      font-size: 1.4rem;
       margin-bottom: 20px;
-      text-shadow: 0 0 10px var(--neon-pink);
     }
 
-    .contact-section p {
-      color: #ccc;
-      margin-bottom: 20px;
-    }
-
-    .contact-section a {
-      background: linear-gradient(to right, #00ffff, #ff00cc);
-      padding: 12px 30px;
+    .btn-buy {
+      background: linear-gradient(135deg, var(--orange), var(--pink));
+      border: none;
+      color: white;
+      padding: 12px 20px;
+      font-size: 1rem;
       border-radius: 30px;
-      color: #111;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 0 15px #00ffff;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-transform: uppercase;
+      font-weight: 600;
+      align-self: center;
+      width: 100%;
     }
 
-    .contact-section a:hover {
-      box-shadow: 0 0 25px #ff00cc;
+    .btn-buy:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 15px var(--purple);
+    }
+
+    .cart-wrapper {
+      position: fixed;
+      right: 0;
+      top: 80px;
+      width: 300px;
+      max-height: 80vh;
+      overflow-y: auto;
+      background: white;
+      border-radius: 20px 0 0 20px;
+      box-shadow: -6px 6px 20px rgba(0,0,0,0.15);
+      padding: 20px;
+      z-index: 999;
+    }
+
+    .cart-wrapper h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--pink);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-total {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: var(--orange);
+    }
+
+    .checkout-btn {
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      border: none;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      text-transform: uppercase;
     }
 
     footer {
       text-align: center;
+      margin-top: 50px;
       padding: 20px;
-      background: #000;
-      color: #aaa;
+      font-size: 1rem;
+    }
+
+    .contact-btn {
+      margin-top: 30px;
+      background: var(--yellow);
+      color: #000;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      .cart-wrapper {
+        width: 100%;
+        top: auto;
+        bottom: 0;
+        border-radius: 20px 20px 0 0;
+      }
     }
   </style>
 </head>
 <body>
+  <div id="app">
+    <header>🍥 CrunchyStore - Premium Anime, One Click Away</header>
 
-  <!-- HERO -->
-  <header>
-    <div class="content">
-      <h1>🔥 UNLIMITED ANIME. 1 SUBSCRIPTION. 🔥</h1>
-      <p>Premium Crunchyroll Accounts at the Best Prices in BD</p>
-      <a href="#plans" class="btn"><i class="fas fa-fire"></i> View Plans</a>
-    </div>
-  </header>
+    <main>
+      <h2>🔥 Unlimited Anime. 1 Subscription.</h2>
+      <section class="products">
+        <article class="product-card" v-for="product in products" :key="product.id">
+          <div class="product-title">{{ product.plan }}</div>
+          <div class="product-desc">{{ product.description }}</div>
+          <div class="product-validity">Duration: {{ product.validity }}</div>
+          <div class="product-price">{{ product.price }} ৳</div>
+          <button class="btn-buy" @click="addToCart(product)">Buy Now</button>
+        </article>
+      </section>
 
-  <!-- PLANS SECTION -->
-  <section id="plans">
-    <h2>Choose Your Plan</h2>
-    <div class="plans-container">
-      <div class="plan-card">
-        <div class="plan-title">1 Month Fan</div>
-        <div class="plan-price">৳200–300</div>
-        <div class="plan-description">Entry-level fan plan for anime lovers on a budget.</div>
-        <a href="#contact" class="btn">Buy Now</a>
+      <div style="text-align:center;">
+        <button class="contact-btn" @click="scrollToContact">📩 Contact Me</button>
       </div>
+    </main>
 
-      <div class="plan-card">
-        <div class="plan-title">1 Month Mega Fan</div>
-        <div class="plan-price">৳250–350</div>
-        <div class="plan-description">More access, more devices, more anime binge sessions!</div>
-        <a href="#contact" class="btn">Buy Now</a>
+    <aside class="cart-wrapper" v-if="cart.length">
+      <h3>Your Cart</h3>
+      <div class="cart-item" v-for="(item, index) in cart" :key="index">
+        <span>{{ item.plan }}</span>
+        <strong>{{ item.price }} ৳</strong>
+        <button @click="removeItem(index)">❌</button>
       </div>
+      <div class="cart-total">Total: {{ cartTotal }} ৳</div>
+      <button class="checkout-btn" @click="checkout">Checkout</button>
+    </aside>
 
-      <div class="plan-card">
-        <div class="plan-title">1 Month Fan (Personal Gmail)</div>
-        <div class="plan-price">৳250–350</div>
-        <div class="plan-description">Full access and account on your Gmail. Instant delivery.</div>
-        <a href="#contact" class="btn">Buy Now</a>
-      </div>
+    <footer id="contact">
+      💬 Contact Me via Facebook or WhatsApp to receive your Premium Account.  
+      <br><br>
+      📞 <strong>Phone:</strong> 01234-567890  
+      <br>
+      💌 <strong>Email:</strong> animeking@otakumail.com
+    </footer>
+  </div>
 
-      <div class="plan-card">
-        <div class="plan-title">1 Month Mega Fan (Personal Gmail)</div>
-        <div class="plan-price">৳300–450</div>
-        <div class="plan-description">Premium Gmail-linked plan with mega features. 🔥</div>
-        <a href="#contact" class="btn">Buy Now</a>
-      </div>
-
-      <div class="plan-card">
-        <div class="plan-title">1 Year Mega Fan (Shared)</div>
-        <div class="plan-price">৳500–750</div>
-        <div class="plan-description">Massive discount! Shared long-term access, perfect for real otakus.</div>
-        <a href="#contact" class="btn">Buy Now</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section class="contact-section" id="contact">
-    <h2>Contact Me</h2>
-    <p>Message me directly on WhatsApp to place your order or ask anything.</p>
-    <a href="https://wa.me/8801XXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i> Message on WhatsApp</a>
-  </section>
-
-  <footer>
-    © 2025 CrunchyBD | For anime lovers, by an anime lover 💫
-  </footer>
-
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script>
+    const { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          products: [
+            {
+              id: 1,
+              plan: '1 Month Fan',
+              price: 250,
+              validity: '30 Days',
+              description: 'Basic Premium Plan - Shared Account',
+            },
+            {
+              id: 2,
+              plan: '1 Month Mega Fan',
+              price: 300,
+              validity: '30 Days',
+              description: 'Mega Fan Plan - Shared Account',
+            },
+            {
+              id: 3,
+              plan: '1 Month Fan (Personal Gmail)',
+              price: 300,
+              validity: '30 Days',
+              description: 'Fan Plan on your Gmail - Personal Access',
+            },
+            {
+              id: 4,
+              plan: '1 Month Mega Fan (Personal Gmail)',
+              price: 400,
+              validity: '30 Days',
+              description: 'Mega Fan Plan on your Gmail - Personal Access',
+            },
+            {
+              id: 5,
+              plan: '1 Year Mega Fan (Shared)',
+              price: 600,
+              validity: '365 Days',
+              description: 'Best Deal! 1 Year Shared Mega Fan',
+            }
+          ],
+          cart: []
+        };
+      },
+      computed: {
+        cartTotal() {
+          return this.cart.reduce((sum, item) => sum + item.price, 0);
+        }
+      },
+      methods: {
+        addToCart(product) {
+          this.cart.push(product);
+          alert(`${product.plan} added to cart!`);
+        },
+        removeItem(index) {
+          this.cart.splice(index, 1);
+        },
+        checkout() {
+          if (this.cart.length === 0) {
+            alert("Cart is empty!");
+            return;
+          }
+          alert(`Thank you for buying! Total: ${this.cartTotal}৳\nWe'll contact you shortly.`);
+          this.cart = [];
+        },
+        scrollToContact() {
+          document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }).mount('#app');
+  </script>
 </body>
 </html>
