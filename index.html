@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -306,7 +306,7 @@
     <section class="hero" aria-label="Hero Section with Anime Video Background">
       <video autoplay muted loop playsinline>
         <source
-          src="https://cdn.pixabay.com/vimeo/620918383/Anime%20Background%20Loop%20-%2027555.mp4?width=1280&hash=46dce41bd1debb007f1e567260f97cc104042f98"
+          src="https://cdn.pixabay.com/vimeo/458246705/Anime%20Background%20Loop%20-%2016776.mp4?width=1280&hash=ff5d0c09f40178b9e6d7d5140b4d3f3dbf34b1c8"
           type="video/mp4"
         />
         Sorry, your browser does not support the video tag.
@@ -331,9 +331,20 @@
         >
           <div class="flip-inner">
             <div class="front">
-              <img :src="anime.coverImage.large" :alt="anime.title.english || anime.title.romaji" loading="lazy" />
+              <img
+                :src="anime.coverImage.large || 'https://i.imgur.com/1oVQqGK.jpg'"
+                :alt="anime.title.english || anime.title.romaji"
+                loading="lazy"
+              />
             </div>
-            <div class="back" :style="{background: `linear-gradient(135deg, ${anime.coverImage.color || '#f472b6'}, #c084fc)`}">
+            <div
+              class="back"
+              :style="{
+                background: `linear-gradient(135deg, ${
+                  anime.coverImage.color || '#f472b6'
+                }, #c084fc)`,
+              }"
+            >
               <h3>{{ anime.title.english || anime.title.romaji }}</h3>
               <p>{{ shortDesc(anime.description) }}</p>
               <p>Score: {{ anime.averageScore || 'N/A' }} | Episodes: {{ anime.episodes || '?' }}</p>
@@ -384,12 +395,14 @@
       <p>&copy; 2025 CrunchyStore. All rights reserved.</p>
     </footer>
 
+    <!-- Chibi Mascot -->
     <img
-      src="https://raw.githubusercontent.com/OpenAI/chatgpt-chat/main/assets/chibi-mascot.png"
+      src="https://i.imgur.com/YXFtNTS.png"
       alt="Chibi Mascot"
       class="mascot"
     />
 
+    <!-- Audio Player -->
     <div class="audio-player" aria-label="Background Music Player">
       <i class="fas fa-music"></i>
       <audio controls loop>
