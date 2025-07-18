@@ -3,32 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CrunchyStore - Ultimate Anime World</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-  />
+  <title>CrunchyStore Vue Edition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --orange: #f97316;
-      --orange-dark: #c2410c;
-      --yellow: #fde047;
       --pink: #f472b6;
       --purple: #c084fc;
-      --blue: #60a5fa;
+      --yellow: #fde047;
       --bg-gradient: linear-gradient(to bottom right, #ffedd5, #fef3c7, #fce7f3);
     }
     body {
@@ -47,14 +30,14 @@
       font-family: 'Orbitron', sans-serif;
       text-shadow: 2px 2px #00000020;
       animation: glow 2s infinite alternate;
-      z-index: 10;
       position: relative;
+      z-index: 10;
     }
     @keyframes glow {
-      from {
+      0% {
         text-shadow: 0 0 10px #ff9f43;
       }
-      to {
+      100% {
         text-shadow: 0 0 30px #fb923c;
       }
     }
@@ -64,10 +47,10 @@
       padding: 100px 20px 80px;
       color: white;
       overflow: hidden;
-      height: 100vh;
+      height: 80vh;
       max-height: 700px;
+      user-select: none;
     }
-    /* Video background */
     .hero video {
       position: absolute;
       top: 50%;
@@ -76,26 +59,32 @@
       min-height: 100%;
       width: auto;
       height: auto;
-      z-index: -1;
       transform: translate(-50%, -50%);
       object-fit: cover;
       filter: brightness(0.5) saturate(1.2);
+      z-index: -1;
     }
     .hero h1 {
       font-size: 3rem;
       color: #fff7ed;
       text-shadow: 2px 2px var(--yellow);
       margin-bottom: 15px;
-      z-index: 5;
+      animation: heroPulse 2.5s infinite alternate;
       position: relative;
+      z-index: 1;
+    }
+    @keyframes heroPulse {
+      0% { text-shadow: 2px 2px var(--yellow); }
+      100% { text-shadow: 2px 2px var(--pink), 0 0 15px var(--pink);}
     }
     .hero p {
       max-width: 600px;
       margin: 0 auto 25px;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: #fef3c7;
-      z-index: 5;
+      text-shadow: 1px 1px #0006;
       position: relative;
+      z-index: 1;
     }
     .btn {
       display: inline-block;
@@ -109,105 +98,152 @@
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
       transition: all 0.4s ease;
       animation: pulse 1.6s infinite;
-      z-index: 5;
+      user-select: none;
       position: relative;
+      z-index: 1;
     }
     .btn:hover {
       transform: scale(1.05);
-      background: linear-gradient(135deg, var(--purple), var(--blue));
+      background: linear-gradient(135deg, var(--purple), #60a5fa);
+      box-shadow: 0 0 30px var(--purple);
     }
     @keyframes pulse {
       0% {
         transform: scale(1);
-        box-shadow: 0 0 10px #f97316;
+        box-shadow: 0 0 10px var(--orange);
       }
       50% {
         transform: scale(1.05);
-        box-shadow: 0 0 25px #f97316;
+        box-shadow: 0 0 25px var(--pink);
       }
       100% {
         transform: scale(1);
-        box-shadow: 0 0 10px #f97316;
+        box-shadow: 0 0 10px var(--orange);
       }
     }
-    .swiper {
-      width: 100%;
-      padding: 40px 0;
+    main {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    .swiper-slide {
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      color: var(--orange);
+      text-shadow: 1px 1px #fff;
+    }
+    .anime-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      user-select: none;
+    }
+    .anime-card {
       background: white;
       border-radius: 15px;
       overflow: hidden;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      perspective: 1000px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: box-shadow 0.4s ease;
     }
-    .swiper-slide:hover {
-      transform: rotateY(10deg) scale(1.05);
-      box-shadow: 0 0 20px var(--purple);
+    .anime-card:hover {
+      box-shadow: 0 0 30px var(--pink);
     }
-    .swiper-slide img {
+    .flip-inner {
+      position: relative;
       width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
+      height: 350px;
+      transition: transform 0.8s ease;
+      transform-style: preserve-3d;
+      border-radius: 15px;
     }
-    .plans,
-    .features {
-      padding: 50px 20px;
+    .anime-card:hover .flip-inner {
+      transform: rotateY(180deg);
+    }
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 350px;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+    .front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+    }
+    .back {
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: white;
+      transform: rotateY(180deg);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 0 15px var(--pink);
+    }
+    .back h3 {
+      margin: 0 0 10px;
+      font-size: 1.3rem;
+    }
+    .back p {
+      font-size: 1rem;
+      line-height: 1.4;
+      user-select: text;
     }
     .plans {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 25px;
-      background: linear-gradient(to bottom left, #fff7ed, #ffe4e6);
+      margin: 50px 0;
     }
-    .card {
+    .plan-card {
       background: white;
       border: 3px solid var(--pink);
       border-radius: 20px;
-      width: 300px;
+      width: 280px;
       text-align: center;
       padding: 25px;
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
+      user-select: none;
     }
-    .card:hover {
+    .plan-card:hover {
       transform: scale(1.08);
       box-shadow: 0 10px 28px rgba(255, 64, 129, 0.3);
     }
-    .features {
-      background: linear-gradient(to bottom right, #fefce8, #ede9fe);
-      text-align: center;
-    }
-    .features h2 {
-      color: var(--orange-dark);
-      font-size: 2.5rem;
-      margin-bottom: 40px;
+    .plan-card h2 {
+      margin-top: 0;
       font-family: 'Orbitron', sans-serif;
+      color: var(--pink);
     }
-    .features-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
+    .price {
+      font-size: 2rem;
+      margin: 15px 0;
+      color: var(--orange);
+      font-weight: 900;
     }
-    .feature {
-      background: white;
-      border: 2px dashed var(--blue);
-      border-radius: 16px;
-      width: 250px;
-      padding: 25px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease;
-    }
-    .feature:hover {
-      transform: translateY(-10px);
-    }
-    .feature-icon {
-      font-size: 2.5rem;
-      color: var(--purple);
-      margin-bottom: 10px;
+    footer {
+      background: linear-gradient(to right, #c2410c, var(--pink));
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      user-select: none;
     }
     .mascot {
       position: fixed;
@@ -216,6 +252,8 @@
       width: 120px;
       z-index: 1000;
       animation: floaty 4s ease-in-out infinite;
+      user-select: none;
+      pointer-events: none;
     }
     @keyframes floaty {
       0% {
@@ -228,13 +266,6 @@
         transform: translateY(0) rotate(0deg);
       }
     }
-    footer {
-      background: linear-gradient(to right, var(--orange-dark), var(--pink));
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.9rem;
-    }
     .audio-player {
       position: fixed;
       left: 20px;
@@ -242,15 +273,17 @@
       background: white;
       border-radius: 30px;
       padding: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
       display: flex;
       align-items: center;
       gap: 10px;
       z-index: 1000;
+      user-select: none;
     }
     .audio-player audio {
       width: 200px;
     }
+
     /* Responsive */
     @media (max-width: 600px) {
       .hero h1 {
@@ -260,163 +293,170 @@
         font-size: 1rem;
         padding: 12px 24px;
       }
-      .swiper-slide img {
-        height: 200px;
-      }
-      .card {
+      .anime-card, .plan-card {
         width: 90%;
-      }
-      .features-grid {
-        flex-direction: column;
-        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-  <header>🍥 CrunchyStore - Your Ultimate Anime World!</header>
+  <div id="app">
+    <header>🍥 CrunchyStore - Your Ultimate Anime World!</header>
 
-  <section class="hero" aria-label="Hero Section with Anime Video Background">
-    <video autoplay muted loop playsinline>
-      <source
-        src="https://cdn.pixabay.com/vimeo/620918383/Anime%20Background%20Loop%20-%2027555.mp4?width=1280&hash=46dce41bd1debb007f1e567260f97cc104042f98"
-        type="video/mp4"
-      />
-      Sorry, your browser does not support the video tag.
-    </video>
-    <h1>UNLIMITED ANIME. 1 SUBSCRIPTION. 🔥</h1>
-    <p>
-      Watch simulcasts fresh from Japan, access exclusive anime, stream in HD
-      and join the otaku revolution.
-    </p>
-    <a href="#plans" class="btn"
-      ><i class="fas fa-shopping-cart"></i> Buy Now</a
-    >
-  </section>
-
-  <section class="swiper mySwiper" aria-label="Trending Anime Carousel">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img
-          src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx112215-1jSbEDv2WTUu.jpg"
-          alt="Chainsaw Man Poster"
-          loading="lazy"
+    <section class="hero" aria-label="Hero Section with Anime Video Background">
+      <video autoplay muted loop playsinline>
+        <source
+          src="https://cdn.pixabay.com/vimeo/620918383/Anime%20Background%20Loop%20-%2027555.mp4?width=1280&hash=46dce41bd1debb007f1e567260f97cc104042f98"
+          type="video/mp4"
         />
-      </div>
-      <div class="swiper-slide">
-        <img
-          src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx116199-nxllv1i3ZqCh.jpg"
-          alt="Jujutsu Kaisen Poster"
-          loading="lazy"
-        />
-      </div>
-      <div class="swiper-slide">
-        <img
-          src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx110381-XySxTXSw6rm7.jpg"
-          alt="Spy x Family Poster"
-          loading="lazy"
-        />
-      </div>
-      <div class="swiper-slide">
-        <img
-          src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx114410-xOwMBBP8hfCe.jpg"
-          alt="Demon Slayer Poster"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </section>
+        Sorry, your browser does not support the video tag.
+      </video>
+      <h1>UNLIMITED ANIME. 1 SUBSCRIPTION. 🔥</h1>
+      <p>
+        Watch simulcasts fresh from Japan, access exclusive anime, stream in HD
+        and join the otaku revolution.
+      </p>
+      <a href="#plans" class="btn"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+    </section>
 
-  <section id="plans" class="plans">
-    <div class="card">
-      <h2>Monthly Plan</h2>
-      <p class="price">$6.99</p>
-      <ul>
-        <li>✨ Simulcasts</li>
-        <li>✨ Unlimited Streaming</li>
-        <li>✨ HD Quality</li>
-      </ul>
-      <a href="#" class="btn">Buy Now</a>
-    </div>
-    <div class="card">
-      <h2>Quarterly Plan</h2>
-      <p class="price">$19.99</p>
-      <ul>
-        <li>✨ All Monthly Perks</li>
-        <li>✨ Offline Viewing</li>
-        <li>✨ Priority Support</li>
-      </ul>
-      <a href="#" class="btn">Buy Now</a>
-    </div>
-    <div class="card">
-      <h2>Yearly Plan</h2>
-      <p class="price">$69.99</p>
-      <ul>
-        <li>✨ Best Value</li>
-        <li>✨ Early Access</li>
-        <li>✨ Special Anime Merch</li>
-      </ul>
-      <a href="#" class="btn">Buy Now</a>
-    </div>
-  </section>
-
-  <section class="features">
-    <h2>Why Choose CrunchyStore?</h2>
-    <div class="features-grid">
-      <div class="feature" data-aos="fade-up">
-        <div class="feature-icon">⏱️</div>
-        <h3>Fast Simulcasts</h3>
-        <p>Watch episodes minutes after Japan airs them!</p>
+    <main>
+      <h2>🔥 Trending Anime</h2>
+      <div class="anime-grid">
+        <article
+          class="anime-card"
+          v-for="anime in trendingAnime"
+          :key="anime.id"
+          tabindex="0"
+          :aria-label="`Anime card for ${anime.title.english || anime.title.romaji}`"
+        >
+          <div class="flip-inner">
+            <div class="front">
+              <img :src="anime.coverImage.large" :alt="anime.title.english || anime.title.romaji" loading="lazy" />
+            </div>
+            <div class="back" :style="{background: `linear-gradient(135deg, ${anime.coverImage.color || '#f472b6'}, #c084fc)`}">
+              <h3>{{ anime.title.english || anime.title.romaji }}</h3>
+              <p>{{ shortDesc(anime.description) }}</p>
+              <p>Score: {{ anime.averageScore || 'N/A' }} | Episodes: {{ anime.episodes || '?' }}</p>
+            </div>
+          </div>
+        </article>
       </div>
-      <div class="feature" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-icon">📚</div>
-        <h3>Massive Library</h3>
-        <p>Thousands of titles — always something new to watch.</p>
-      </div>
-      <div class="feature" data-aos="fade-up" data-aos-delay="200">
-        <div class="feature-icon">🗣️</div>
-        <h3>Dub + Sub</h3>
-        <p>Your favorite anime in your language, your way.</p>
-      </div>
+
+      <section id="plans">
+        <h2>Choose Your Plan</h2>
+        <div class="plans">
+          <div class="plan-card">
+            <h2>Monthly Plan</h2>
+            <p class="price">$6.99</p>
+            <ul>
+              <li>✨ Simulcasts</li>
+              <li>✨ Unlimited Streaming</li>
+              <li>✨ HD Quality</li>
+            </ul>
+            <a href="#" class="btn">Buy Now</a>
+          </div>
+          <div class="plan-card">
+            <h2>Quarterly Plan</h2>
+            <p class="price">$19.99</p>
+            <ul>
+              <li>✨ All Monthly Perks</li>
+              <li>✨ Offline Viewing</li>
+              <li>✨ Priority Support</li>
+            </ul>
+            <a href="#" class="btn">Buy Now</a>
+          </div>
+          <div class="plan-card">
+            <h2>Yearly Plan</h2>
+            <p class="price">$69.99</p>
+            <ul>
+              <li>✨ Best Value</li>
+              <li>✨ Early Access</li>
+              <li>✨ Special Anime Merch</li>
+            </ul>
+            <a href="#" class="btn">Buy Now</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with 💖 by anime fans. Join us, live anime.</p>
+      <p>&copy; 2025 CrunchyStore. All rights reserved.</p>
+    </footer>
+
+    <img
+      src="https://raw.githubusercontent.com/OpenAI/chatgpt-chat/main/assets/chibi-mascot.png"
+      alt="Chibi Mascot"
+      class="mascot"
+    />
+
+    <div class="audio-player" aria-label="Background Music Player">
+      <i class="fas fa-music"></i>
+      <audio controls loop>
+        <source src="https://files.catbox.moe/qjngbj.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
     </div>
-  </section>
-
-  <footer>
-    <p>Made with 💖 by anime fans. Join us, live anime.</p>
-    <p>&copy; 2025 CrunchyStore. All rights reserved.</p>
-  </footer>
-
-  <img
-    src="https://raw.githubusercontent.com/OpenAI/chatgpt-chat/main/assets/chibi-mascot.png"
-    alt="Chibi Mascot"
-    class="mascot"
-  />
-
-  <div class="audio-player" aria-label="Background Music Player">
-    <i class="fas fa-music"></i>
-    <audio controls loop>
-      <source src="https://files.catbox.moe/qjngbj.mp3" type="audio/mp3" />
-      Your browser does not support the audio element.
-    </audio>
   </div>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <!-- Vue 3 -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <script>
-    AOS.init();
-    new Swiper('.mySwiper', {
-      slidesPerView: 1.2,
-      spaceBetween: 20,
-      loop: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          trendingAnime: [],
+        };
       },
-      breakpoints: {
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
+      methods: {
+        shortDesc(desc) {
+          if (!desc) return 'No description available.';
+          const text = desc.replace(/(<([^>]+)>)/gi, ''); // remove HTML tags
+          return text.length > 130 ? text.slice(0, 130) + '...' : text;
+        },
+        async fetchTrendingAnime() {
+          const query = `
+            query {
+              Page(perPage: 12) {
+                media(sort: POPULARITY_DESC, type: ANIME) {
+                  id
+                  title {
+                    romaji
+                    english
+                  }
+                  coverImage {
+                    large
+                    color
+                  }
+                  description(asHtml: false)
+                  averageScore
+                  episodes
+                }
+              }
+            }
+          `;
+          try {
+            const res = await fetch('https://graphql.anilist.co', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+              body: JSON.stringify({ query }),
+            });
+            const json = await res.json();
+            this.trendingAnime = json.data.Page.media;
+          } catch (e) {
+            console.error('Failed to fetch anime:', e);
+          }
+        },
       },
-    });
+      mounted() {
+        this.fetchTrendingAnime();
+      },
+    }).mount('#app');
   </script>
 </body>
 </html>
