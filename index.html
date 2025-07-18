@@ -1,224 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CrunchyStore - Buy Crunchyroll Premium</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Jost:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --orange: #f97316;
-      --pink: #f472b6;
-      --purple: #c084fc;
-      --yellow: #fde047;
-      --bg: linear-gradient(135deg, #fff7ed, #ffe4e6);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CrunchyStore - Buy Crunchyroll Premium</title>
 
-    * {
-      box-sizing: border-box;
-    }
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Press+Start+2P&family=Jost:wght@400;600&display=swap" rel="stylesheet" />
 
-    body {
-      margin: 0;
-      font-family: 'Jost', sans-serif;
-      background: var(--bg);
-      color: #1f2937;
-      overflow-x: hidden;
-    }
+<style>
+  /* Root colors */
+  :root {
+    --orange: #f97316;
+    --pink: #f472b6;
+    --purple: #c084fc;
+    --yellow: #fde047;
+    --bg-gradient: linear-gradient(135deg, #fef3c7, #fce7f3);
+  }
 
-    header {
-      background: linear-gradient(to right, var(--orange), var(--pink));
-      padding: 25px;
-      text-align: center;
-      font-size: 2.5rem;
-      font-family: 'Orbitron', sans-serif;
-      color: white;
-      text-shadow: 2px 2px 8px #00000040;
-      animation: glow 2s infinite alternate;
-    }
+  /* Reset & body */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Jost', sans-serif;
+    background: var(--bg-gradient);
+    color: #1f2937;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
 
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 10px #f59e0b;
-      }
-      100% {
-        text-shadow: 0 0 30px #fb923c;
-      }
-    }
+  /* Sparkle background container */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('https://i.ibb.co/YXL5f37/soft-anime-sparkle-bg.png') center center / cover no-repeat;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+    animation: sparkle-move 60s linear infinite;
+  }
+  @keyframes sparkle-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 1000px; }
+  }
 
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
+  header {
+    background: linear-gradient(to right, var(--orange), var(--pink));
+    padding: 25px 15px;
+    text-align: center;
+    font-size: 2.8rem;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    text-shadow:
+      0 0 8px #ff7f50,
+      0 0 12px #ff4500,
+      0 0 24px #ff1493;
+    animation: glow-header 2.5s infinite alternate;
+    user-select: none;
+    position: relative;
+    z-index: 10;
+  }
+  @keyframes glow-header {
+    0% {
+      text-shadow:
+        0 0 8px #ff7f50,
+        0 0 12px #ff4500,
+        0 0 24px #ff1493;
     }
-
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      color: var(--pink);
-      font-family: 'Orbitron', sans-serif;
-      margin-bottom: 30px;
+    100% {
+      text-shadow:
+        0 0 20px #ff7f50,
+        0 0 30px #ff4500,
+        0 0 50px #ff1493;
     }
+  }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
+  main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 15px;
+    flex-grow: 1;
+    position: relative;
+    z-index: 5;
+  }
+  h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.3rem;
+    text-align: center;
+    color: var(--pink);
+    text-shadow:
+      2px 2px #00000088,
+      0 0 10px var(--pink);
+    margin-bottom: 40px;
+  }
 
-    .product-card {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
 
-    .product-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px var(--pink);
-    }
+  .product-card {
+    background: linear-gradient(135deg, #fff0f6, #ffe4f0);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow:
+      0 0 15px #ff6fa9,
+      inset 0 0 15px #ff6fa9;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    user-select: none;
+    position: relative;
+  }
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    border-radius: 35px;
+    background: radial-gradient(circle at center, #ff82a9 0%, transparent 70%);
+    filter: blur(20px);
+    opacity: 0.6;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+  .product-card:hover {
+    transform: scale(1.05) rotate(-1deg);
+    box-shadow:
+      0 0 30px #ff6fa9,
+      inset 0 0 30px #ff6fa9;
+  }
+  .product-card:hover::before {
+    opacity: 1;
+  }
 
-    .product-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.4rem;
-      color: var(--purple);
-      text-align: center;
-      margin-bottom: 10px;
-    }
+  .product-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--purple);
+    text-shadow:
+      1px 1px 2px #000000cc,
+      0 0 8px var(--purple);
+    margin-bottom: 15px;
+  }
 
-    .product-desc {
-      text-align: center;
-      color: #444;
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-    }
+  .product-desc {
+    font-size: 1rem;
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 0 3px #fff7;
+  }
 
-    .product-validity {
-      text-align: center;
-      color: var(--pink);
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
+  .product-validity {
+    text-align: center;
+    color: var(--pink);
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 0 4px var(--pink);
+  }
 
-    .product-price {
-      text-align: center;
-      color: var(--orange);
-      font-weight: 900;
-      font-size: 1.4rem;
-      margin-bottom: 20px;
-    }
+  .product-price {
+    text-align: center;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: var(--orange);
+    text-shadow:
+      0 0 8px var(--orange),
+      0 0 20px var(--yellow);
+    margin-bottom: 20px;
+  }
 
-    .btn-buy {
-      background: linear-gradient(135deg, var(--orange), var(--pink));
-      border: none;
-      color: white;
-      padding: 12px 20px;
-      font-size: 1rem;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-transform: uppercase;
-      font-weight: 600;
-      align-self: center;
-      width: 100%;
-    }
+  .btn-buy {
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    border: none;
+    padding: 14px 28px;
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: 35px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow:
+      0 0 10px var(--pink),
+      0 0 20px var(--orange);
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+    user-select: none;
+    align-self: center;
+    width: 100%;
+    max-width: 220px;
+  }
+  .btn-buy:hover {
+    box-shadow:
+      0 0 25px var(--purple),
+      0 0 40px var(--pink),
+      0 0 60px var(--orange);
+    transform: scale(1.1);
+  }
 
-    .btn-buy:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 15px var(--purple);
-    }
+  /* Shopping cart */
+  .cart-wrapper {
+    position: fixed;
+    right: 0;
+    top: 80px;
+    width: 320px;
+    max-height: 80vh;
+    background: white;
+    border-radius: 25px 0 0 25px;
+    padding: 20px;
+    box-shadow: -6px 6px 25px rgba(255, 105, 180, 0.4);
+    overflow-y: auto;
+    font-family: 'Jost', sans-serif;
+    user-select: none;
+    z-index: 9999;
+  }
 
+  .cart-wrapper h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--pink);
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 6px var(--pink);
+  }
+
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #fce7f3;
+  }
+
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+
+  .cart-item span {
+    font-weight: 700;
+    color: var(--purple);
+  }
+
+  .cart-item strong {
+    color: var(--orange);
+    font-weight: 900;
+  }
+
+  .cart-item button {
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    color: var(--pink);
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .cart-item button:hover {
+    color: var(--orange);
+  }
+
+  .cart-total {
+    font-weight: 900;
+    font-size: 1.4rem;
+    margin-top: 15px;
+    color: var(--orange);
+    text-align: center;
+    border-top: 2px solid var(--pink);
+    padding-top: 12px;
+    user-select: none;
+  }
+
+  .checkout-btn {
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    width: 100%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-radius: 35px;
+    margin-top: 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+  .checkout-btn:hover {
+    background: linear-gradient(135deg, var(--orange), #f43f5e);
+    box-shadow: 0 0 25px var(--orange);
+    transform: scale(1.1);
+  }
+
+  /* Contact Me button */
+  .contact-btn {
+    display: block;
+    margin: 40px auto 20px;
+    background: var(--yellow);
+    color: #222;
+    font-weight: 800;
+    padding: 15px 35px;
+    border-radius: 40px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.15rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow:
+      0 0 8px var(--yellow),
+      0 0 18px var(--pink);
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+  .contact-btn:hover {
+    box-shadow:
+      0 0 25px var(--yellow),
+      0 0 45px var(--pink);
+    transform: scale(1.1);
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px 60px;
+    font-size: 1.1rem;
+    color: var(--purple);
+    font-family: 'Jost', sans-serif;
+    text-shadow: 0 0 8px #fff0;
+  }
+
+  /* Responsive */
+  @media (max-width: 960px) {
     .cart-wrapper {
       position: fixed;
+      bottom: 0;
       right: 0;
-      top: 80px;
-      width: 300px;
-      max-height: 80vh;
-      overflow-y: auto;
-      background: white;
-      border-radius: 20px 0 0 20px;
-      box-shadow: -6px 6px 20px rgba(0,0,0,0.15);
-      padding: 20px;
-      z-index: 999;
-    }
-
-    .cart-wrapper h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.4rem;
-      color: var(--pink);
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
-    }
-
-    .cart-total {
-      font-weight: bold;
-      text-align: center;
-      margin-top: 10px;
-      font-size: 1.2rem;
-      color: var(--orange);
-    }
-
-    .checkout-btn {
-      background: linear-gradient(135deg, var(--purple), var(--pink));
-      border: none;
-      color: white;
-      padding: 12px;
       width: 100%;
-      margin-top: 10px;
-      border-radius: 25px;
-      font-weight: 600;
-      cursor: pointer;
-      text-transform: uppercase;
+      max-height: 40vh;
+      border-radius: 20px 20px 0 0;
+      padding: 15px 10px;
+      box-shadow: 0 -6px 20px rgba(255,105,180,0.3);
     }
-
-    footer {
-      text-align: center;
-      margin-top: 50px;
-      padding: 20px;
+  }
+  @media (max-width: 480px) {
+    header {
+      font-size: 2rem;
+      padding: 20px 10px;
+    }
+    main {
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+    .product-card {
+      padding: 20px 15px;
+    }
+    .btn-buy {
       font-size: 1rem;
+      padding: 12px 25px;
+      max-width: 100%;
     }
-
-    .contact-btn {
-      margin-top: 30px;
-      background: var(--yellow);
-      color: #000;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 768px) {
-      .cart-wrapper {
-        width: 100%;
-        top: auto;
-        bottom: 0;
-        border-radius: 20px 20px 0 0;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
   <div id="app">
-    <header>🍥 CrunchyStore - Premium Anime, One Click Away</header>
+    <header>🍥 CrunchyStore - Premium Anime One Click Away</header>
 
     <main>
       <h2>🔥 Unlimited Anime. 1 Subscription.</h2>
-      <section class="products">
-        <article class="product-card" v-for="product in products" :key="product.id">
+      <section class="products" aria-label="Crunchyroll subscription plans">
+        <article
+          class="product-card"
+          v-for="product in products"
+          :key="product.id"
+          tabindex="0"
+          :aria-label="product.plan + ' plan, ' + product.validity + ', price ' + product.price + ' taka'"
+        >
           <div class="product-title">{{ product.plan }}</div>
           <div class="product-desc">{{ product.description }}</div>
           <div class="product-validity">Duration: {{ product.validity }}</div>
@@ -227,27 +395,23 @@
         </article>
       </section>
 
-      <div style="text-align:center;">
-        <button class="contact-btn" @click="scrollToContact">📩 Contact Me</button>
-      </div>
+      <button class="contact-btn" @click="scrollToContact">📩 Contact Me</button>
     </main>
 
-    <aside class="cart-wrapper" v-if="cart.length">
+    <aside class="cart-wrapper" v-if="cart.length > 0" aria-label="Shopping cart">
       <h3>Your Cart</h3>
       <div class="cart-item" v-for="(item, index) in cart" :key="index">
         <span>{{ item.plan }}</span>
         <strong>{{ item.price }} ৳</strong>
-        <button @click="removeItem(index)">❌</button>
+        <button @click="removeItem(index)" aria-label="Remove item">✕</button>
       </div>
       <div class="cart-total">Total: {{ cartTotal }} ৳</div>
       <button class="checkout-btn" @click="checkout">Checkout</button>
     </aside>
 
-    <footer id="contact">
-      💬 Contact Me via Facebook or WhatsApp to receive your Premium Account.  
-      <br><br>
-      📞 <strong>Phone:</strong> 01234-567890  
-      <br>
+    <footer id="contact" tabindex="0">
+      💬 Contact Me via Facebook or WhatsApp to receive your Premium Account.<br />
+      📞 <strong>Phone:</strong> 01234-567890<br />
       💌 <strong>Email:</strong> animeking@otakumail.com
     </footer>
   </div>
@@ -259,64 +423,34 @@
       data() {
         return {
           products: [
-            {
-              id: 1,
-              plan: '1 Month Fan',
-              price: 250,
-              validity: '30 Days',
-              description: 'Basic Premium Plan - Shared Account',
-            },
-            {
-              id: 2,
-              plan: '1 Month Mega Fan',
-              price: 300,
-              validity: '30 Days',
-              description: 'Mega Fan Plan - Shared Account',
-            },
-            {
-              id: 3,
-              plan: '1 Month Fan (Personal Gmail)',
-              price: 300,
-              validity: '30 Days',
-              description: 'Fan Plan on your Gmail - Personal Access',
-            },
-            {
-              id: 4,
-              plan: '1 Month Mega Fan (Personal Gmail)',
-              price: 400,
-              validity: '30 Days',
-              description: 'Mega Fan Plan on your Gmail - Personal Access',
-            },
-            {
-              id: 5,
-              plan: '1 Year Mega Fan (Shared)',
-              price: 600,
-              validity: '365 Days',
-              description: 'Best Deal! 1 Year Shared Mega Fan',
-            }
+            { id: 1, plan: '1 Month Fan', price: 250, validity: '30 Days', description: 'Basic Premium Plan - Shared Account' },
+            { id: 2, plan: '1 Month Mega Fan', price: 300, validity: '30 Days', description: 'Mega Fan Plan - Shared Account' },
+            { id: 3, plan: '1 Month Fan (Personal Gmail)', price: 300, validity: '30 Days', description: 'Fan Plan on your Gmail - Personal Access' },
+            { id: 4, plan: '1 Month Mega Fan (Personal Gmail)', price: 400, validity: '30 Days', description: 'Mega Fan Plan on your Gmail - Personal Access' },
+            { id: 5, plan: '1 Year Mega Fan (Shared)', price: 600, validity: '365 Days', description: 'Best Deal! 1 Year Shared Mega Fan' }
           ],
           cart: []
         };
       },
       computed: {
         cartTotal() {
-          return this.cart.reduce((sum, item) => sum + item.price, 0);
+          return this.cart.reduce((total, item) => total + item.price, 0);
         }
       },
       methods: {
         addToCart(product) {
           this.cart.push(product);
-          alert(`${product.plan} added to cart!`);
+          alert(`✅ "${product.plan}" added to cart!`);
         },
         removeItem(index) {
           this.cart.splice(index, 1);
         },
         checkout() {
-          if (this.cart.length === 0) {
-            alert("Cart is empty!");
+          if(this.cart.length === 0) {
+            alert("Your cart is empty!");
             return;
           }
-          alert(`Thank you for buying! Total: ${this.cartTotal}৳\nWe'll contact you shortly.`);
+          alert(`Thank you for your purchase! Total: ${this.cartTotal} ৳\nWe will contact you shortly with account details.`);
           this.cart = [];
         },
         scrollToContact() {
