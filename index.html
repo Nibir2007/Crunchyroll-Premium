@@ -3,76 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Crunchyroll Premium Seller</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Crunchyroll Premium - Anime Deals</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --neon-pink: #ff00cc;
+      --neon-blue: #00ffff;
+      --neon-purple: #9f00ff;
+      --bg-dark: #0d0d1a;
+      --card-dark: #1e1e2f;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Quicksand', sans-serif;
     }
 
     body {
-      background: #111;
+      background: var(--bg-dark);
       color: #fff;
       scroll-behavior: smooth;
     }
 
     header {
-      background: url('https://cdn.pixabay.com/photo/2023/11/23/20/58/anime-8409322_1280.jpg') no-repeat center center/cover;
+      background: linear-gradient(135deg, #ff00cc, #3333ff);
+      background-size: 300% 300%;
+      animation: pulseBG 10s ease infinite;
       height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 20px;
-      position: relative;
     }
 
-    header::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.6);
-      z-index: 1;
-    }
-
-    header .content {
-      position: relative;
-      z-index: 2;
+    @keyframes pulseBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     header h1 {
       font-size: 3em;
       color: #fff;
-      margin-bottom: 10px;
+      text-shadow: 0 0 15px #ff00cc;
     }
 
     header p {
       font-size: 1.2em;
-      color: #ccc;
-      margin-bottom: 30px;
+      margin-top: 10px;
+      color: #fff;
+      text-shadow: 0 0 8px #00ffff;
     }
 
     .btn {
-      background: #f39c12;
-      color: #111;
+      margin-top: 25px;
+      background: linear-gradient(45deg, #00ffff, #ff00cc);
       padding: 12px 25px;
-      text-decoration: none;
+      border-radius: 40px;
+      color: #111;
       font-weight: bold;
-      border-radius: 5px;
-      transition: 0.3s;
+      text-decoration: none;
+      box-shadow: 0 0 15px #00ffff;
+      transition: transform 0.2s ease;
     }
 
     .btn:hover {
-      background: #e67e22;
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff00cc;
     }
 
     section#plans {
       padding: 60px 20px;
-      background: #1e1e2f;
+      background: #131324;
+    }
+
+    section#plans h2 {
+      text-align: center;
+      font-size: 2.2em;
+      color: var(--neon-blue);
+      margin-bottom: 40px;
     }
 
     .plans-container {
@@ -84,72 +97,86 @@
     }
 
     .plan-card {
-      background: #222;
-      border: 2px solid #f39c12;
-      border-radius: 12px;
-      padding: 20px;
-      transition: transform 0.3s ease, box-shadow 0.3s;
+      background: var(--card-dark);
+      border-radius: 20px;
+      padding: 25px;
+      border: 2px solid var(--neon-purple);
+      position: relative;
+      box-shadow: 0 0 15px #9f00ff70;
+      overflow: hidden;
+      transition: transform 0.4s ease;
     }
 
     .plan-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 15px #f39c12;
+      transform: rotateY(3deg) scale(1.05);
+      box-shadow: 0 0 30px #ff00ccaa;
     }
 
     .plan-title {
-      font-size: 1.3em;
-      margin-bottom: 10px;
+      font-size: 1.4em;
       color: #fff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 6px var(--neon-pink);
     }
 
     .plan-price {
       font-size: 1.1em;
-      color: #f39c12;
+      color: var(--neon-blue);
       margin-bottom: 15px;
     }
 
     .plan-description {
       font-size: 0.95em;
+      color: #ccc;
       margin-bottom: 20px;
-      color: #bbb;
+    }
+
+    .plan-card .btn {
+      background: linear-gradient(45deg, #00ffff, #ff00cc);
+      color: #111;
+      padding: 10px 20px;
+      font-size: 0.95em;
     }
 
     .contact-section {
-      padding: 60px 20px;
-      background: #111;
+      background: #0f0f1f;
       text-align: center;
+      padding: 60px 20px;
     }
 
     .contact-section h2 {
       font-size: 2em;
-      margin-bottom: 10px;
+      color: var(--neon-pink);
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px var(--neon-pink);
     }
 
     .contact-section p {
-      margin-bottom: 25px;
       color: #ccc;
+      margin-bottom: 20px;
     }
 
     .contact-section a {
-      display: inline-block;
-      background: #3498db;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 5px;
-      text-decoration: none;
+      background: linear-gradient(to right, #00ffff, #ff00cc);
+      padding: 12px 30px;
+      border-radius: 30px;
+      color: #111;
       font-weight: bold;
-      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 0 15px #00ffff;
     }
 
     .contact-section a:hover {
-      background: #2980b9;
+      box-shadow: 0 0 25px #ff00cc;
+      transform: scale(1.05);
     }
 
     footer {
       text-align: center;
       padding: 20px;
       background: #000;
-      color: #888;
+      color: #aaa;
     }
   </style>
 </head>
@@ -158,58 +185,62 @@
   <!-- HERO -->
   <header>
     <div class="content">
-      <h1>UNLIMITED ANIME. 1 SUBSCRIPTION. 🔥</h1>
-      <p>Affordable Crunchyroll Premium Plans. Stream what you love!</p>
-      <a href="#plans" class="btn"><i class="fas fa-crown"></i> View Plans</a>
+      <h1>🔥 UNLIMITED ANIME. 1 SUBSCRIPTION. 🔥</h1>
+      <p>Premium Crunchyroll Accounts at the Best Prices in BD</p>
+      <a href="#plans" class="btn"><i class="fas fa-fire"></i> View Plans</a>
     </div>
   </header>
 
   <!-- PLANS SECTION -->
   <section id="plans">
-    <h2 style="text-align:center; margin-bottom:30px;">Our Premium Plans</h2>
+    <h2>Choose Your Plan</h2>
     <div class="plans-container">
       <div class="plan-card">
         <div class="plan-title">1 Month Fan</div>
         <div class="plan-price">৳200–300</div>
-        <div class="plan-description">Basic plan for single device. Fast delivery guaranteed.</div>
+        <div class="plan-description">Entry-level fan plan for anime lovers on a budget.</div>
         <a href="#contact" class="btn">Buy Now</a>
       </div>
+
       <div class="plan-card">
         <div class="plan-title">1 Month Mega Fan</div>
         <div class="plan-price">৳250–350</div>
-        <div class="plan-description">Enjoy ad-free anime on multiple devices.</div>
+        <div class="plan-description">More access, more devices, more anime binge sessions!</div>
         <a href="#contact" class="btn">Buy Now</a>
       </div>
+
       <div class="plan-card">
         <div class="plan-title">1 Month Fan (Personal Gmail)</div>
         <div class="plan-price">৳250–350</div>
-        <div class="plan-description">Linked with your Gmail. Direct control of the account.</div>
+        <div class="plan-description">Full access and account on your Gmail. Instant delivery.</div>
         <a href="#contact" class="btn">Buy Now</a>
       </div>
+
       <div class="plan-card">
         <div class="plan-title">1 Month Mega Fan (Personal Gmail)</div>
         <div class="plan-price">৳300–450</div>
-        <div class="plan-description">Premium access with full Gmail ownership.</div>
+        <div class="plan-description">Premium Gmail-linked plan with mega features. 🔥</div>
         <a href="#contact" class="btn">Buy Now</a>
       </div>
+
       <div class="plan-card">
         <div class="plan-title">1 Year Mega Fan (Shared)</div>
         <div class="plan-price">৳500–750</div>
-        <div class="plan-description">Best deal for long-term anime lovers. Shared but stable.</div>
+        <div class="plan-description">Massive discount! Shared long-term access, perfect for real otakus.</div>
         <a href="#contact" class="btn">Buy Now</a>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT SECTION -->
   <section class="contact-section" id="contact">
     <h2>Contact Me</h2>
-    <p>Message me to place your order or ask questions.</p>
+    <p>Message me directly on WhatsApp to place your order or ask anything.</p>
     <a href="https://wa.me/8801XXXXXXXXX" target="_blank"><i class="fab fa-whatsapp"></i> Message on WhatsApp</a>
   </section>
 
   <footer>
-    © 2025 Crunchyroll Seller | Made for anime fans ❤️
+    © 2025 CrunchyBD | For anime lovers, by an anime lover 💫
   </footer>
 
 </body>
