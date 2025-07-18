@@ -154,12 +154,21 @@
     margin-bottom: 15px;
   }
 
-  .product-desc {
-    font-size: 1rem;
-    color: #4a4a4a;
+  .product-details {
+    font-size: 0.9rem;
+    color: #6b21a8;
+    margin: 8px 0 15px;
+    text-shadow: 0 0 4px #dda0dd88;
+    line-height: 1.3;
     text-align: center;
-    margin-bottom: 15px;
-    text-shadow: 0 0 3px #fff7;
+  }
+  .product-details ul {
+    padding-left: 20px;
+    list-style-type: disc;
+    margin: 0;
+  }
+  .product-details li {
+    margin-bottom: 4px;
   }
 
   .product-validity {
@@ -337,7 +346,6 @@
     font-size: 1.1rem;
     color: var(--purple);
     font-family: 'Jost', sans-serif;
-    text-shadow: 0 0 8px #fff0;
   }
 
   /* Responsive */
@@ -388,7 +396,11 @@
           :aria-label="product.plan + ' plan, ' + product.validity + ', price ' + product.price + ' taka'"
         >
           <div class="product-title">{{ product.plan }}</div>
-          <div class="product-desc">{{ product.description }}</div>
+          <div class="product-details">
+            <ul>
+              <li v-for="detail in product.details" :key="detail">{{ detail }}</li>
+            </ul>
+          </div>
           <div class="product-validity">Duration: {{ product.validity }}</div>
           <div class="product-price">{{ product.price }} ৳</div>
           <button class="btn-buy" @click="addToCart(product)">Buy Now</button>
@@ -423,11 +435,66 @@
       data() {
         return {
           products: [
-            { id: 1, plan: '1 Month Fan', price: 250, validity: '30 Days', description: 'Basic Premium Plan - Shared Account' },
-            { id: 2, plan: '1 Month Mega Fan', price: 300, validity: '30 Days', description: 'Mega Fan Plan - Shared Account' },
-            { id: 3, plan: '1 Month Fan (Personal Gmail)', price: 300, validity: '30 Days', description: 'Fan Plan on your Gmail - Personal Access' },
-            { id: 4, plan: '1 Month Mega Fan (Personal Gmail)', price: 400, validity: '30 Days', description: 'Mega Fan Plan on your Gmail - Personal Access' },
-            { id: 5, plan: '1 Year Mega Fan (Shared)', price: 600, validity: '365 Days', description: 'Best Deal! 1 Year Shared Mega Fan' }
+            {
+              id: 1,
+              plan: '1 Month Fan',
+              price: 250,
+              validity: '30 Days',
+              description: 'Basic Premium Plan - Shared Account',
+              details: [
+                'Access to full Crunchyroll library',
+                'Shared account with limited simultaneous streams',
+                'Affordable monthly price'
+              ]
+            },
+            {
+              id: 2,
+              plan: '1 Month Mega Fan',
+              price: 300,
+              validity: '30 Days',
+              description: 'Mega Fan Plan - Shared Account',
+              details: [
+                'Full Premium access',
+                'Higher streaming priority',
+                'Shared account with more simultaneous streams'
+              ]
+            },
+            {
+              id: 3,
+              plan: '1 Month Fan (Personal Gmail)',
+              price: 300,
+              validity: '30 Days',
+              description: 'Fan Plan on your Gmail - Personal Access',
+              details: [
+                'Personal Gmail linked account',
+                'Full library access',
+                'One user only'
+              ]
+            },
+            {
+              id: 4,
+              plan: '1 Month Mega Fan (Personal Gmail)',
+              price: 400,
+              validity: '30 Days',
+              description: 'Mega Fan Plan on your Gmail - Personal Access',
+              details: [
+                'Personal Gmail linked',
+                'Highest streaming quality',
+                'One user only'
+              ]
+            },
+            {
+              id: 5,
+              plan: '1 Year Mega Fan (Shared)',
+              price: 600,
+              validity: '365 Days',
+              description: 'Best Deal! 1 Year Shared Mega Fan',
+              details: [
+                'Full Premium access for 1 year',
+                'Shared account',
+                'Best price for long term'
+              ]
+            }
           ],
           cart: []
         };
