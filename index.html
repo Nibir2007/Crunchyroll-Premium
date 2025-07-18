@@ -1,370 +1,370 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>CrunchyStore - Buy Crunchyroll Premium Accounts</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    /* Global Reset & Box-sizing */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>CrunchyStore - Buy Crunchyroll Premium Accounts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Global Reset & Box-sizing */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      max-width: 100vw;
-      overflow-x: hidden;
-      font-family: 'Jost', sans-serif;
-      background: linear-gradient(135deg, #fef3c7, #fce7f3);
-      color: #1f2937;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      scroll-behavior: smooth;
-    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      max-width: 100vw;
+      overflow-x: hidden;
+      font-family: 'Jost', sans-serif;
+      background: linear-gradient(135deg, #fef3c7, #fce7f3);
+      color: #1f2937;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
 
-    header {
-      background: linear-gradient(to right, #f97316, #f472b6);
-      padding: 25px 15px;
-      text-align: center;
-      font-size: 2.8rem;
-      color: white;
-      font-family: 'Orbitron', sans-serif;
-      text-shadow: 2px 2px #00000040;
-      animation: glow 2s infinite alternate;
-      user-select: none;
-      flex-shrink: 0;
-    }
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 10px #ff9f43;
-      }
-      100% {
-        text-shadow: 0 0 30px #fb923c;
-      }
-    }
+    header {
+      background: linear-gradient(to right, #f97316, #f472b6);
+      padding: 25px 15px;
+      text-align: center;
+      font-size: 2.8rem;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 2px 2px #00000040;
+      animation: glow 2s infinite alternate;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px #ff9f43;
+      }
+      100% {
+        text-shadow: 0 0 30px #fb923c;
+      }
+    }
 
-    main {
-      flex-grow: 1;
-      max-width: 1200px;
-      margin: 30px auto 90px;
-      padding: 0 15px;
-      width: 100%;
-      box-sizing: border-box;
-    }
+    main {
+      flex-grow: 1;
+      max-width: 1200px;
+      margin: 30px auto 90px;
+      padding: 0 15px;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-    h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-      text-align: center;
-      color: #f97316;
-      text-shadow: 1px 1px #fff;
-    }
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #f97316;
+      text-shadow: 1px 1px #fff;
+    }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-bottom: 60px;
-    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 60px;
+    }
 
-    .product-card {
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-      padding: 25px;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      user-select: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .product-card::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(120deg, #f472b6 0%, #c084fc 50%, #f97316 100%);
-      opacity: 0.15;
-      transform: rotate(45deg);
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .product-card:hover::before {
-      opacity: 0.3;
-    }
-    .product-card:hover {
-      box-shadow: 0 0 40px #f472b6;
-      transform: translateY(-6px);
-      z-index: 10;
-    }
+    .product-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      padding: 25px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, #f472b6 0%, #c084fc 50%, #f97316 100%);
+      opacity: 0.15;
+      transform: rotate(45deg);
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .product-card:hover::before {
+      opacity: 0.3;
+    }
+    .product-card:hover {
+      box-shadow: 0 0 40px #f472b6;
+      transform: translateY(-6px);
+      z-index: 10;
+    }
 
-    .product-title {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 1.6rem;
-      color: #f472b6;
-      margin-bottom: 10px;
-      text-align: center;
-      z-index: 1;
-      position: relative;
-    }
-    .product-desc {
-      font-size: 1rem;
-      color: #444;
-      margin-bottom: 15px;
-      text-align: center;
-      min-height: 50px;
-      z-index: 1;
-      position: relative;
-    }
-    .product-validity {
-      font-weight: 600;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #c084fc;
-      z-index: 1;
-      position: relative;
-    }
-    .product-price {
-      font-weight: 900;
-      font-size: 1.8rem;
-      color: #f97316;
-      margin-bottom: 20px;
-      text-align: center;
-      text-shadow: 0 0 8px #fb923c;
-      animation: shimmer 2.5s infinite;
-      z-index: 1;
-      position: relative;
-    }
+    .product-title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: #f472b6;
+      margin-bottom: 10px;
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+    .product-desc {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 15px;
+      text-align: center;
+      min-height: 50px;
+      z-index: 1;
+      position: relative;
+    }
+    .product-validity {
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #c084fc;
+      z-index: 1;
+      position: relative;
+    }
+    .product-price {
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: #f97316;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 0 0 8px #fb923c;
+      animation: shimmer 2.5s infinite;
+      z-index: 1;
+      position: relative;
+    }
 
-    @keyframes shimmer {
-      0% {
-        text-shadow: 0 0 5px #fb923c, 0 0 10px #f59e0b;
-      }
-      50% {
-        text-shadow: 0 0 15px #fb923c, 0 0 30px #f59e0b;
-      }
-      100% {
-        text-shadow: 0 0 5px #fb923c, 0 0 10px #f59e0b;
-      }
-    }
+    @keyframes shimmer {
+      0% {
+        text-shadow: 0 0 5px #fb923c, 0 0 10px #f59e0b;
+      }
+      50% {
+        text-shadow: 0 0 15px #fb923c, 0 0 30px #f59e0b;
+      }
+      100% {
+        text-shadow: 0 0 5px #fb923c, 0 0 10px #f59e0b;
+      }
+    }
 
-    .btn-buy {
-      background: linear-gradient(135deg, #f97316, #f472b6);
-      border: none;
-      padding: 14px 28px;
-      color: white;
-      font-size: 1.1rem;
-      border-radius: 25px;
-      text-align: center;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.3s ease;
-      user-select: none;
-      align-self: center;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-      width: 100%;
-      max-width: 220px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      position: relative;
-      z-index: 1;
-    }
-    .btn-buy:hover {
-      background: linear-gradient(135deg, #c084fc, #60a5fa);
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #c084fc;
-    }
+    .btn-buy {
+      background: linear-gradient(135deg, #f97316, #f472b6);
+      border: none;
+      padding: 14px 28px;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 25px;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      user-select: none;
+      align-self: center;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 220px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+    .btn-buy:hover {
+      background: linear-gradient(135deg, #c084fc, #60a5fa);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #c084fc;
+    }
 
-    /* Contact Me Button */
-    #contact-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      max-width: calc(100vw - 60px);
-      background: linear-gradient(135deg, #f472b6, #c084fc);
-      color: white;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 1.4rem;
-      border: none;
-      padding: 15px 25px;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(255, 71, 166, 0.8);
-      user-select: none;
-      transition: background 0.3s ease, transform 0.3s ease;
-      z-index: 10000;
-      box-sizing: border-box;
-    }
-    #contact-btn:hover {
-      background: linear-gradient(135deg, #f97316, #f43f5e);
-      transform: scale(1.05);
-      box-shadow: 0 0 25px #f97316;
-    }
+    /* Contact Me Button */
+    #contact-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      max-width: calc(100vw - 60px);
+      background: linear-gradient(135deg, #f472b6, #c084fc);
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(255, 71, 166, 0.8);
+      user-select: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+      z-index: 10000;
+      box-sizing: border-box;
+    }
+    #contact-btn:hover {
+      background: linear-gradient(135deg, #f97316, #f43f5e);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #f97316;
+    }
 
-    /* Responsive */
+    /* Responsive */
 
-    @media (max-width: 480px) {
-      header {
-        font-size: 2rem;
-        padding: 20px 10px;
-      }
-      main {
-        margin: 20px auto 80px;
-        padding: 0 10px;
-      }
-      .product-card {
-        padding: 15px;
-      }
-      .btn-buy {
-        font-size: 1rem;
-        padding: 12px 20px;
-        max-width: 100%;
-      }
-      #contact-btn {
-        font-size: 1.2rem;
-        padding: 12px 20px;
-        bottom: 20px;
-        right: 20px;
-      }
-    }
-  </style>
+    @media (max-width: 480px) {
+      header {
+        font-size: 2rem;
+        padding: 20px 10px;
+      }
+      main {
+        margin: 20px auto 80px;
+        padding: 0 10px;
+      }
+      .product-card {
+        padding: 15px;
+      }
+      .btn-buy {
+        font-size: 1rem;
+        padding: 12px 20px;
+        max-width: 100%;
+      }
+      #contact-btn {
+        font-size: 1.2rem;
+        padding: 12px 20px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="app">
-    <header>🍥 CrunchyStore - Buy Crunchyroll Premium Accounts</header>
+  <div id="app">
+    <header>🍥 CrunchyStore - Buy Crunchyroll Premium Accounts</header>
 
-    <main>
-      <h2>Available Crunchyroll Accounts</h2>
-      <section class="products" aria-label="List of Crunchyroll premium accounts for sale">
-        <article
-          class="product-card"
-          v-for="product in products"
-          :key="product.id"
-          tabindex="0"
-          :aria-label="`Crunchyroll account: ${product.plan} plan for ${product.validity}`"
-        >
-          <div class="product-title">{{ product.plan }}</div>
-          <div class="product-desc">{{ product.description }}</div>
-          <ul style="margin-left: 20px; margin-bottom: 15px; color:#555;" v-if="product.details">
-            <li v-for="(detail, idx) in product.details" :key="idx">{{ detail }}</li>
-          </ul>
-          <div class="product-validity">Validity: {{ product.validity }}</div>
-          <div class="product-price">{{ product.price.toLocaleString('en-IN') }} ৳</div>
-          <button class="btn-buy" @click="buyNow(product)">Buy Now</button>
-        </article>
-      </section>
-    </main>
+    <main>
+      <h2>Available Crunchyroll Accounts</h2>
+      <section class="products" aria-label="List of Crunchyroll premium accounts for sale">
+        <article
+          class="product-card"
+          v-for="product in products"
+          :key="product.id"
+          tabindex="0"
+          :aria-label="`Crunchyroll account: ${product.plan} plan for ${product.validity}`"
+        >
+          <div class="product-title">{{ product.plan }}</div>
+          <div class="product-desc">{{ product.description }}</div>
+          <ul style="margin-left: 20px; margin-bottom: 15px; color:#555;" v-if="product.details">
+            <li v-for="(detail, idx) in product.details" :key="idx">{{ detail }}</li>
+          </ul>
+          <div class="product-validity">Validity: {{ product.validity }}</div>
+          <div class="product-price">{{ product.price.toLocaleString('en-IN') }} ৳</div>
+          <button class="btn-buy" @click="buyNow(product)">Buy Now</button>
+        </article>
+      </section>
+    </main>
 
-    <button id="contact-btn" @click="scrollToContact">Contact Me</button>
+    <button id="contact-btn" @click="scrollToContact">Contact Me</button>
 
-    <footer id="contact" style="text-align:center; padding: 30px 15px; font-size: 1.1rem; background: #f9f7fd; color: #444;">
-      <p>📧 Email: <a href="mailto:your-email@example.com" style="color:#f472b6;">your-email@example.com</a></p>
-      <p>📱 WhatsApp: <a href="https://wa.me/8801799665769" target="_blank" style="color:#f472b6;">+880 1799 665 769</a></p>
-      <p>© 2025 CrunchyStore - All rights reserved.</p>
-    </footer>
-  </div>
+    <footer id="contact" style="text-align:center; padding: 30px 15px; font-size: 1.1rem; background: #f9f7fd; color: #444;">
+      <p>📧 Email: <a href="mailto:your-email@example.com" style="color:#f472b6;">your-email@example.com</a></p>
+      <p>📱 WhatsApp: <a href="https://wa.me/8801799665769" target="_blank" style="color:#f472b6;">+880 1799 665 769</a></p>
+      <p>© 2025 CrunchyStore - All rights reserved.</p>
+    </footer>
+  </div>
 
-  <!-- Vue 3 -->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <!-- Vue 3 from CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 
-  <script>
-    const { createApp } = Vue;
-    createApp({
-      data() {
-        return {
-          products: [
-            {
-              id: 1,
-              plan: '1 Month Fan',
-              price: 200,
-              validity: '30 Days',
-              description: 'Full Crunchyroll Premium access for 1 device/profile.',
-              details: [
-                '1 Device/Profile',
-                'Full Premium access',
-                'No personal Gmail',
-              ],
-            },
-            {
-              id: 2,
-              plan: '1 Month Mega Fan',
-              price: 300,
-              validity: '30 Days',
-              description: 'Full Crunchyroll Premium access with more features.',
-              details: [
-                'Up to 3 Devices/Profiles',
-                'Full Premium access',
-                'No personal Gmail',
-              ],
-            },
-            {
-              id: 3,
-              plan: '1 Month Fan (Personal Gmail)',
-              price: 300,
-              validity: '30 Days',
-              description: 'Premium account tied to a personal Gmail for better security.',
-              details: [
-                '1 Device/Profile',
-                'Full Premium access',
-                'Personal Gmail',
-              ],
-            },
-            {
-              id: 4,
-              plan: '1 Month Mega Fan (Personal Gmail)',
-              price: 450,
-              validity: '30 Days',
-              description: 'Personal Gmail with Mega Fan plan, usable on up to 5 devices/profiles.',
-              details: [
-                'Up to 5 Devices/Profiles',
-                'Full Premium access',
-                'Personal Gmail',
-              ],
-            },
-            {
-              id: 5,
-              plan: '1 Year Mega Fan (Shared Account)',
-              price: 700,
-              validity: '365 Days',
-              description: 'Best value - long-term shared access',
-              details: [
-                'Shared account',
-                'Up to 3 Devices/Profiles',
-                'Full Premium access',
-              ],
-            }
-          ],
-        };
-      },
-      methods: {
-        buyNow(product) {
-          const phone = '8801799665769'; // Bangladesh country code + number
-          const message = encodeURIComponent(`I want to buy the ${product.plan} plan.`);
-          const url = `https://wa.me/${phone}?text=${message}`;
-          window.open(url, '_blank');
-        },
-        scrollToContact() {
-          const contactSection = document.getElementById('contact');
-          if (contactSection) {
-            contactSection.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      }
-    }).mount('#app');
-  </script>
+  <script>
+    const { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          products: [
+            {
+              id: 1,
+              plan: '1 Month Fan',
+              price: 200,
+              validity: '30 Days',
+              description: 'Full Crunchyroll Premium access for 1 device/profile.',
+              details: [
+                '1 Device/Profile',
+                'Full Premium access',
+                'No personal Gmail',
+              ],
+            },
+            {
+              id: 2,
+              plan: '1 Month Mega Fan',
+              price: 300,
+              validity: '30 Days',
+              description: 'Full Crunchyroll Premium access with more features.',
+              details: [
+                'Up to 3 Devices/Profiles',
+                'Full Premium access',
+                'No personal Gmail',
+              ],
+            },
+            {
+              id: 3,
+              plan: '1 Month Fan (Personal Gmail)',
+              price: 300,
+              validity: '30 Days',
+              description: 'Premium account tied to a personal Gmail for better security.',
+              details: [
+                '1 Device/Profile',
+                'Full Premium access',
+                'Personal Gmail',
+              ],
+            },
+            {
+              id: 4,
+              plan: '1 Month Mega Fan (Personal Gmail)',
+              price: 450,
+              validity: '30 Days',
+              description: 'Personal Gmail with Mega Fan plan, usable on up to 5 devices/profiles.',
+              details: [
+                'Up to 5 Devices/Profiles',
+                'Full Premium access',
+                'Personal Gmail',
+              ],
+            },
+            {
+              id: 5,
+              plan: '1 Year Mega Fan (Shared Account)',
+              price: 700,
+              validity: '365 Days',
+              description: 'Best value - long-term shared access',
+              details: [
+                'Shared account',
+                'Up to 3 Devices/Profiles',
+                'Full Premium access',
+              ],
+            }
+          ],
+        };
+      },
+      methods: {
+        buyNow(product) {
+          const phone = '8801799665769'; // Bangladesh country code + number
+          const message = encodeURIComponent(`I want to buy the ${product.plan} plan.`);
+          const url = `https://wa.me/${phone}?text=${message}`;
+          window.open(url, '_blank');
+        },
+        scrollToContact() {
+          const contactSection = document.getElementById('contact');
+          if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+    }).mount('#app');
+  </script>
 </body>
 </html>
