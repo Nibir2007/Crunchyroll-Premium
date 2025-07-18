@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CrunchyStore Vue Edition</title>
+  <title>CrunchyStore - Buy Crunchyroll Premium Accounts</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet" />
   <style>
@@ -12,299 +12,355 @@
       --pink: #f472b6;
       --purple: #c084fc;
       --yellow: #fde047;
-      --bg-gradient: linear-gradient(to bottom right, #ffedd5, #fef3c7, #fce7f3);
+      --bg-gradient: linear-gradient(135deg, #fef3c7, #fce7f3);
     }
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Jost', sans-serif;
       background: var(--bg-gradient);
       color: #1f2937;
       overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     header {
       background: linear-gradient(to right, var(--orange), var(--pink));
-      padding: 30px 20px;
+      padding: 25px 15px;
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: white;
       font-family: 'Orbitron', sans-serif;
-      text-shadow: 2px 2px #00000020;
+      text-shadow: 2px 2px #00000040;
       animation: glow 2s infinite alternate;
-      position: relative;
-      z-index: 10;
-    }
-    @keyframes glow { 0% { text-shadow: 0 0 10px #ff9f43; } 100% { text-shadow: 0 0 30px #fb923c; } }
-    .hero {
-      position: relative;
-      text-align: center;
-      padding: 100px 20px 80px;
-      color: white;
-      overflow: hidden;
-      height: 80vh;
-      max-height: 700px;
       user-select: none;
-      background: url('https://cdn.pixabay.com/photo/2019/12/17/15/52/anime-4706134_1280.jpg') center/cover no-repeat;
-      filter: brightness(0.6) saturate(1.2);
     }
-    .hero h1 {
-      font-size: 3rem;
-      color: #fff7ed;
-      text-shadow: 2px 2px var(--yellow);
-      margin-bottom: 15px;
-      animation: heroPulse 2.5s infinite alternate;
-      position: relative; z-index: 1;
-    }
-    @keyframes heroPulse { 0% { text-shadow: 2px 2px var(--yellow); } 100% { text-shadow: 2px 2px var(--pink), 0 0 15px var(--pink);} }
-    .hero p {
-      max-width: 600px;
-      margin: 0 auto 25px;
-      font-size: 1.3rem;
-      color: #fef3c7;
-      text-shadow: 1px 1px #0006;
-      position: relative; z-index: 1;
-    }
-    .btn {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--orange), var(--pink));
-      color: white;
-      padding: 14px 28px;
-      border-radius: 20px;
-      font-size: 1.1rem;
-      text-decoration: none;
-      margin-top: 20px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-      transition: all 0.4s ease;
-      animation: pulse 1.6s infinite;
-      position: relative; z-index: 1;
-    }
-    .btn:hover { transform: scale(1.05); background: linear-gradient(135deg, var(--purple), #60a5fa); box-shadow: 0 0 30px var(--purple); }
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 10px var(--orange); }
-      50% { transform: scale(1.05); box-shadow: 0 0 25px var(--pink); }
-      100% { transform: scale(1); box-shadow: 0 0 10px var(--orange); }
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px #ff9f43;
+      }
+      100% {
+        text-shadow: 0 0 30px #fb923c;
+      }
     }
     main {
-      padding: 40px 20px;
+      flex-grow: 1;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 30px auto;
+      padding: 0 15px;
+      width: 100%;
     }
     h2 {
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
-      font-size: 2rem;
+      font-size: 2.2rem;
       margin-bottom: 30px;
       text-align: center;
       color: var(--orange);
       text-shadow: 1px 1px #fff;
     }
-    .anime-grid {
+    .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 25px;
+      margin-bottom: 60px;
     }
-    .anime-card {
+    .product-card {
       background: white;
-      border-radius: 15px;
-      perspective: 1000px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-      cursor: pointer;
-      transition: box-shadow 0.4s ease;
-    }
-    .anime-card:hover { box-shadow: 0 0 30px var(--pink); }
-    .flip-inner {
-      position: relative;
-      width: 100%;
-      height: 350px;
-      transition: transform 0.8s ease;
-      transform-style: preserve-3d;
-      border-radius: 15px;
-    }
-    .anime-card:hover .flip-inner { transform: rotateY(180deg); }
-    .front, .back {
-      position: absolute;
-      width: 100%;
-      height: 350px;
-      backface-visibility: hidden;
-      border-radius: 15px;
-      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      padding: 25px;
+      transition: box-shadow 0.3s ease;
+      user-select: none;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 15px;
+      justify-content: space-between;
+      cursor: pointer;
     }
-    .front img {
-      width: 100%; height: 100%; object-fit: cover;
-      user-select: none; pointer-events: none;
+    .product-card:hover {
+      box-shadow: 0 0 30px var(--pink);
     }
-    .back {
-      background: linear-gradient(135deg, var(--pink), var(--purple));
-      color: white;
-      transform: rotateY(180deg);
+    .product-title {
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--pink);
+      margin-bottom: 10px;
       text-align: center;
+    }
+    .product-desc {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 15px;
+      text-align: center;
+      min-height: 50px;
+    }
+    .product-validity {
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+      color: var(--purple);
+    }
+    .product-price {
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--orange);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .btn-buy {
+      background: linear-gradient(135deg, var(--orange), var(--pink));
+      border: none;
+      padding: 14px 28px;
+      color: white;
+      font-size: 1.1rem;
+      border-radius: 25px;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      user-select: none;
+      align-self: center;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 220px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .btn-buy:hover {
+      background: linear-gradient(135deg, var(--purple), #60a5fa);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px var(--purple);
+    }
+    /* Shopping Cart */
+    .cart-wrapper {
+      position: fixed;
+      right: 0;
+      top: 80px;
+      width: 320px;
+      max-height: 80vh;
+      background: white;
+      box-shadow: -6px 6px 20px rgba(0,0,0,0.15);
+      border-radius: 20px 0 0 20px;
       padding: 20px;
-      box-shadow: 0 0 15px var(--pink);
+      overflow-y: auto;
+      z-index: 1000;
+      font-family: 'Jost', sans-serif;
+      user-select: none;
     }
-    .back h3 { margin: 0 0 10px; font-size: 1.3rem; }
-    .back p { font-size: 1rem; line-height: 1.4; user-select: text; }
-    .plans { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin: 50px 0; }
-    .plan-card {
-      background: white; border: 3px solid var(--pink); border-radius: 20px;
-      width: 280px; text-align: center; padding: 25px; box-shadow: 0 8px 18px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
+    .cart-wrapper h3 {
+      margin-top: 0;
+      color: var(--pink);
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      text-shadow: 1px 1px #fff;
     }
-    .plan-card:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(255,64,129,0.3); }
-    .plan-card h2 { margin-top:0; font-family:'Orbitron',sans-serif; color:var(--pink); }
-    .price { font-size:2rem; margin:15px 0; color:var(--orange); font-weight:900; }
-    footer {
-      background: linear-gradient(to right, #c2410c, var(--pink));
-      color: white; text-align: center; padding: 40px 20px; font-size: 0.9rem;
+    .cart-items {
+      max-height: 300px;
+      overflow-y: auto;
     }
-    .audio-player {
-      position: fixed; left: 20px; bottom: 20px; background: white;
-      border-radius: 30px; padding: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      display: flex; align-items: center; gap: 10px; z-index: 1000;
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
     }
-    .audio-player audio { width: 200px; }
-    @media (max-width:600px) {
-      .hero h1 { font-size:2rem; }
-      .btn { font-size:1rem; padding:12px 24px; }
-      .anime-card, .plan-card { width:90%; }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .cart-item-info {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+    .cart-item-title {
+      font-weight: 700;
+      color: var(--purple);
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+    .cart-item-price {
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .cart-item-remove {
+      background: transparent;
+      border: none;
+      color: var(--pink);
+      font-size: 1.2rem;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s ease;
+    }
+    .cart-item-remove:hover {
+      color: var(--orange);
+    }
+    .cart-total {
+      margin-top: 15px;
+      font-weight: 900;
+      font-size: 1.4rem;
+      text-align: center;
+      color: var(--orange);
+      border-top: 2px solid var(--pink);
+      padding-top: 10px;
+      user-select: none;
+    }
+    .checkout-btn {
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 30px;
+      margin-top: 15px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .checkout-btn:hover {
+      background: linear-gradient(135deg, var(--orange), #f43f5e);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--orange);
+    }
+    /* Responsive */
+    @media (max-width: 960px) {
+      .cart-wrapper {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        max-height: 40vh;
+        border-radius: 20px 20px 0 0;
+        padding: 15px 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      header {
+        font-size: 2rem;
+        padding: 20px 10px;
+      }
+      main {
+        margin: 20px auto;
+        padding: 0 10px;
+      }
+      .product-card {
+        padding: 15px;
+      }
+      .btn-buy {
+        font-size: 1rem;
+        padding: 12px 20px;
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <header>🍥 CrunchyStore - Your Ultimate Anime World!</header>
-
-    <!-- Hero with static image background -->
-    <section class="hero" aria-label="Hero Section with Anime Background Image">
-      <h1>UNLIMITED ANIME. 1 SUBSCRIPTION. 🔥</h1>
-      <p>Watch simulcasts fresh from Japan, access exclusive anime, stream in HD and join the otaku revolution.</p>
-      <a href="#plans" class="btn"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-    </section>
+    <header>🍥 CrunchyStore - Buy Crunchyroll Premium Accounts</header>
 
     <main>
-      <h2>🔥 Trending Anime</h2>
-      <div class="anime-grid">
+      <h2>Available Crunchyroll Accounts</h2>
+      <section class="products" aria-label="List of Crunchyroll premium accounts for sale">
         <article
-          class="anime-card"
-          v-for="anime in trendingAnime"
-          :key="anime.id"
+          class="product-card"
+          v-for="product in products"
+          :key="product.id"
           tabindex="0"
-          :aria-label="`Anime card for ${anime.title.english || anime.title.romaji}`"
+          :aria-label="`Crunchyroll account: ${product.plan} plan for ${product.validity}`"
         >
-          <div class="flip-inner">
-            <div class="front">
-              <img
-                :src="anime.coverImage.large || 'https://i.imgur.com/1oVQqGK.jpg'"
-                :alt="anime.title.english || anime.title.romaji"
-                loading="lazy"
-              />
-            </div>
-            <div
-              class="back"
-              :style="{
-                background: `linear-gradient(135deg, ${
-                  anime.coverImage.color || '#f472b6'
-                }, #c084fc)`,
-              }"
-            >
-              <h3>{{ anime.title.english || anime.title.romaji }}</h3>
-              <p>{{ shortDesc(anime.description) }}</p>
-              <p>Score: {{ anime.averageScore || 'N/A' }} | Episodes: {{ anime.episodes || '?' }}</p>
-            </div>
-          </div>
+          <div class="product-title">{{ product.plan }} Plan</div>
+          <div class="product-desc">{{ product.description }}</div>
+          <div class="product-validity">Validity: {{ product.validity }}</div>
+          <div class="product-price">\${{ product.price.toFixed(2) }}</div>
+          <button class="btn-buy" @click="addToCart(product)">Buy Now</button>
         </article>
-      </div>
-
-      <section id="plans">
-        <h2>Choose Your Plan</h2>
-        <div class="plans">
-          <div class="plan-card">
-            <h2>Monthly Plan</h2>
-            <p class="price">$6.99</p>
-            <ul>
-              <li>✨ Simulcasts</li>
-              <li>✨ Unlimited Streaming</li>
-              <li>✨ HD Quality</li>
-            </ul>
-            <a href="#" class="btn">Buy Now</a>
-          </div>
-          <div class="plan-card">
-            <h2>Quarterly Plan</h2>
-            <p class="price">$19.99</p>
-            <ul>
-              <li>✨ All Monthly Perks</li>
-              <li>✨ Offline Viewing</li>
-              <li>✨ Priority Support</li>
-            </ul>
-            <a href="#" class="btn">Buy Now</a>
-          </div>
-          <div class="plan-card">
-            <h2>Yearly Plan</h2>
-            <p class="price">$69.99</p>
-            <ul>
-              <li>✨ Best Value</li>
-              <li>✨ Early Access</li>
-              <li>✨ Special Anime Merch</li>
-            </ul>
-            <a href="#" class="btn">Buy Now</a>
-          </div>
-        </div>
       </section>
     </main>
 
-    <footer>
-      <p>Made with 💖 by anime fans. Join us, live anime.</p>
-      <p>&copy; 2025 CrunchyStore. All rights reserved.</p>
-    </footer>
+    <!-- Shopping Cart -->
+    <aside class="cart-wrapper" aria-label="Shopping cart" v-if="cart.length > 0">
+      <h3>Your Cart</h3>
+      <div class="cart-items" role="list">
+        <div class="cart-item" v-for="(item, index) in cart" :key="item.id" role="listitem">
+          <div class="cart-item-info">
+            <div class="cart-item-title">{{ item.plan }} Plan</div>
+            <div class="cart-item-price">\${{ item.price.toFixed(2) }}</div>
+          </div>
+          <button class="cart-item-remove" @click="removeFromCart(index)" aria-label="Remove from cart">&times;</button>
+        </div>
+      </div>
+      <div class="cart-total">Total: \${{ cartTotal.toFixed(2) }}</div>
+      <button class="checkout-btn" @click="checkout">Checkout</button>
+    </aside>
   </div>
 
   <!-- Vue 3 -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <script>
     const { createApp } = Vue;
     createApp({
       data() {
-        return { trendingAnime: [] };
+        return {
+          products: [
+            {
+              id: 1,
+              plan: 'Monthly',
+              price: 6.99,
+              validity: '30 days',
+              description: 'Full Crunchyroll Premium access for 1 month.',
+            },
+            {
+              id: 2,
+              plan: 'Quarterly',
+              price: 19.99,
+              validity: '90 days',
+              description: 'Enjoy Premium access for 3 months.',
+            },
+            {
+              id: 3,
+              plan: 'Yearly',
+              price: 69.99,
+              validity: '365 days',
+              description: 'Best value - 1 year of Premium access!',
+            }
+          ],
+          cart: []
+        };
       },
-      methods: {
-        shortDesc(desc) {
-          if (!desc) return 'No description available.';
-          const text = desc.replace(/(<([^>]+)>)/gi, '');
-          return text.length > 130 ? text.slice(0,130) + '...' : text;
-        },
-        async fetchTrendingAnime() {
-          const query = `
-            query {
-              Page(perPage: 12) {
-                media(sort: POPULARITY_DESC, type: ANIME) {
-                  id title { romaji english }
-                  coverImage { large color }
-                  description(asHtml:false)
-                  averageScore episodes
-                }
-              }
-            }`;
-          try {
-            const res = await fetch('https://graphql.anilist.co', {
-              method:'POST',
-              headers:{ 'Content-Type':'application/json','Accept':'application/json' },
-              body:JSON.stringify({ query })
-            });
-            const json = await res.json();
-            this.trendingAnime = json.data.Page.media;
-          } catch(e) { console.error(e); }
+      computed: {
+        cartTotal() {
+          return this.cart.reduce((sum, item) => sum + item.price, 0);
         }
       },
-      mounted() { this.fetchTrendingAnime(); }
+      methods: {
+        addToCart(product) {
+          this.cart.push(product);
+          alert(`${product.plan} plan added to cart!`);
+        },
+        removeFromCart(index) {
+          this.cart.splice(index, 1);
+        },
+        checkout() {
+          if(this.cart.length === 0) {
+            alert('Your cart is empty!');
+            return;
+          }
+          // Placeholder for checkout logic - You can integrate Stripe or PayPal here
+          alert(`Thank you for your purchase! Total: $${this.cartTotal.toFixed(2)}\nWe will contact you with the account details.`);
+          this.cart = [];
+        }
+      }
     }).mount('#app');
   </script>
 </body>
