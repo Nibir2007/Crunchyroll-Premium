@@ -14,6 +14,7 @@
       --yellow: #fde047;
       --bg-gradient: linear-gradient(to bottom right, #ffedd5, #fef3c7, #fce7f3);
     }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Jost', sans-serif;
@@ -33,14 +34,7 @@
       position: relative;
       z-index: 10;
     }
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 10px #ff9f43;
-      }
-      100% {
-        text-shadow: 0 0 30px #fb923c;
-      }
-    }
+    @keyframes glow { 0% { text-shadow: 0 0 10px #ff9f43; } 100% { text-shadow: 0 0 30px #fb923c; } }
     .hero {
       position: relative;
       text-align: center;
@@ -50,19 +44,8 @@
       height: 80vh;
       max-height: 700px;
       user-select: none;
-    }
-    .hero video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      filter: brightness(0.5) saturate(1.2);
-      z-index: -1;
+      background: url('https://cdn.pixabay.com/photo/2019/12/17/15/52/anime-4706134_1280.jpg') center/cover no-repeat;
+      filter: brightness(0.6) saturate(1.2);
     }
     .hero h1 {
       font-size: 3rem;
@@ -70,21 +53,16 @@
       text-shadow: 2px 2px var(--yellow);
       margin-bottom: 15px;
       animation: heroPulse 2.5s infinite alternate;
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
     }
-    @keyframes heroPulse {
-      0% { text-shadow: 2px 2px var(--yellow); }
-      100% { text-shadow: 2px 2px var(--pink), 0 0 15px var(--pink);}
-    }
+    @keyframes heroPulse { 0% { text-shadow: 2px 2px var(--yellow); } 100% { text-shadow: 2px 2px var(--pink), 0 0 15px var(--pink);} }
     .hero p {
       max-width: 600px;
       margin: 0 auto 25px;
       font-size: 1.3rem;
       color: #fef3c7;
       text-shadow: 1px 1px #0006;
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
     }
     .btn {
       display: inline-block;
@@ -95,31 +73,16 @@
       font-size: 1.1rem;
       text-decoration: none;
       margin-top: 20px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
       transition: all 0.4s ease;
       animation: pulse 1.6s infinite;
-      user-select: none;
-      position: relative;
-      z-index: 1;
+      position: relative; z-index: 1;
     }
-    .btn:hover {
-      transform: scale(1.05);
-      background: linear-gradient(135deg, var(--purple), #60a5fa);
-      box-shadow: 0 0 30px var(--purple);
-    }
+    .btn:hover { transform: scale(1.05); background: linear-gradient(135deg, var(--purple), #60a5fa); box-shadow: 0 0 30px var(--purple); }
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 10px var(--orange);
-      }
-      50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 25px var(--pink);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 10px var(--orange);
-      }
+      0% { transform: scale(1); box-shadow: 0 0 10px var(--orange); }
+      50% { transform: scale(1.05); box-shadow: 0 0 25px var(--pink); }
+      100% { transform: scale(1); box-shadow: 0 0 10px var(--orange); }
     }
     main {
       padding: 40px 20px;
@@ -139,20 +102,16 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 25px;
-      user-select: none;
     }
     .anime-card {
       background: white;
       border-radius: 15px;
-      overflow: hidden;
       perspective: 1000px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.15);
       cursor: pointer;
       transition: box-shadow 0.4s ease;
     }
-    .anime-card:hover {
-      box-shadow: 0 0 30px var(--pink);
-    }
+    .anime-card:hover { box-shadow: 0 0 30px var(--pink); }
     .flip-inner {
       position: relative;
       width: 100%;
@@ -161,9 +120,7 @@
       transform-style: preserve-3d;
       border-radius: 15px;
     }
-    .anime-card:hover .flip-inner {
-      transform: rotateY(180deg);
-    }
+    .anime-card:hover .flip-inner { transform: rotateY(180deg); }
     .front, .back {
       position: absolute;
       width: 100%;
@@ -176,14 +133,10 @@
       justify-content: center;
       align-items: center;
       padding: 15px;
-      box-sizing: border-box;
     }
     .front img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      user-select: none;
-      pointer-events: none;
+      width: 100%; height: 100%; object-fit: cover;
+      user-select: none; pointer-events: none;
     }
     .back {
       background: linear-gradient(135deg, var(--pink), var(--purple));
@@ -195,107 +148,31 @@
       padding: 20px;
       box-shadow: 0 0 15px var(--pink);
     }
-    .back h3 {
-      margin: 0 0 10px;
-      font-size: 1.3rem;
-    }
-    .back p {
-      font-size: 1rem;
-      line-height: 1.4;
-      user-select: text;
-    }
-    .plans {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      margin: 50px 0;
-    }
+    .back h3 { margin: 0 0 10px; font-size: 1.3rem; }
+    .back p { font-size: 1rem; line-height: 1.4; user-select: text; }
+    .plans { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin: 50px 0; }
     .plan-card {
-      background: white;
-      border: 3px solid var(--pink);
-      border-radius: 20px;
-      width: 280px;
-      text-align: center;
-      padding: 25px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+      background: white; border: 3px solid var(--pink); border-radius: 20px;
+      width: 280px; text-align: center; padding: 25px; box-shadow: 0 8px 18px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
-      user-select: none;
     }
-    .plan-card:hover {
-      transform: scale(1.08);
-      box-shadow: 0 10px 28px rgba(255, 64, 129, 0.3);
-    }
-    .plan-card h2 {
-      margin-top: 0;
-      font-family: 'Orbitron', sans-serif;
-      color: var(--pink);
-    }
-    .price {
-      font-size: 2rem;
-      margin: 15px 0;
-      color: var(--orange);
-      font-weight: 900;
-    }
+    .plan-card:hover { transform: scale(1.08); box-shadow: 0 10px 28px rgba(255,64,129,0.3); }
+    .plan-card h2 { margin-top:0; font-family:'Orbitron',sans-serif; color:var(--pink); }
+    .price { font-size:2rem; margin:15px 0; color:var(--orange); font-weight:900; }
     footer {
       background: linear-gradient(to right, #c2410c, var(--pink));
-      color: white;
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.9rem;
-      user-select: none;
-    }
-    .mascot {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 120px;
-      z-index: 1000;
-      animation: floaty 4s ease-in-out infinite;
-      user-select: none;
-      pointer-events: none;
-    }
-    @keyframes floaty {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-20px) rotate(5deg);
-      }
-      100% {
-        transform: translateY(0) rotate(0deg);
-      }
+      color: white; text-align: center; padding: 40px 20px; font-size: 0.9rem;
     }
     .audio-player {
-      position: fixed;
-      left: 20px;
-      bottom: 20px;
-      background: white;
-      border-radius: 30px;
-      padding: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      z-index: 1000;
-      user-select: none;
+      position: fixed; left: 20px; bottom: 20px; background: white;
+      border-radius: 30px; padding: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      display: flex; align-items: center; gap: 10px; z-index: 1000;
     }
-    .audio-player audio {
-      width: 200px;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .btn {
-        font-size: 1rem;
-        padding: 12px 24px;
-      }
-      .anime-card, .plan-card {
-        width: 90%;
-      }
+    .audio-player audio { width: 200px; }
+    @media (max-width:600px) {
+      .hero h1 { font-size:2rem; }
+      .btn { font-size:1rem; padding:12px 24px; }
+      .anime-card, .plan-card { width:90%; }
     }
   </style>
 </head>
@@ -303,19 +180,10 @@
   <div id="app">
     <header>🍥 CrunchyStore - Your Ultimate Anime World!</header>
 
-    <section class="hero" aria-label="Hero Section with Anime Video Background">
-      <video autoplay muted loop playsinline>
-        <source
-          src="https://cdn.pixabay.com/vimeo/458246705/Anime%20Background%20Loop%20-%2016776.mp4?width=1280&hash=ff5d0c09f40178b9e6d7d5140b4d3f3dbf34b1c8"
-          type="video/mp4"
-        />
-        Sorry, your browser does not support the video tag.
-      </video>
+    <!-- Hero with static image background -->
+    <section class="hero" aria-label="Hero Section with Anime Background Image">
       <h1>UNLIMITED ANIME. 1 SUBSCRIPTION. 🔥</h1>
-      <p>
-        Watch simulcasts fresh from Japan, access exclusive anime, stream in HD
-        and join the otaku revolution.
-      </p>
+      <p>Watch simulcasts fresh from Japan, access exclusive anime, stream in HD and join the otaku revolution.</p>
       <a href="#plans" class="btn"><i class="fas fa-shopping-cart"></i> Buy Now</a>
     </section>
 
@@ -394,22 +262,6 @@
       <p>Made with 💖 by anime fans. Join us, live anime.</p>
       <p>&copy; 2025 CrunchyStore. All rights reserved.</p>
     </footer>
-
-    <!-- Chibi Mascot -->
-    <img
-      src="https://i.imgur.com/YXFtNTS.png"
-      alt="Chibi Mascot"
-      class="mascot"
-    />
-
-    <!-- Audio Player -->
-    <div class="audio-player" aria-label="Background Music Player">
-      <i class="fas fa-music"></i>
-      <audio controls loop>
-        <source src="https://files.catbox.moe/qjngbj.mp3" type="audio/mp3" />
-        Your browser does not support the audio element.
-      </audio>
-    </div>
   </div>
 
   <!-- Vue 3 -->
@@ -419,56 +271,40 @@
 
   <script>
     const { createApp } = Vue;
-
     createApp({
       data() {
-        return {
-          trendingAnime: [],
-        };
+        return { trendingAnime: [] };
       },
       methods: {
         shortDesc(desc) {
           if (!desc) return 'No description available.';
-          const text = desc.replace(/(<([^>]+)>)/gi, ''); // remove HTML tags
-          return text.length > 130 ? text.slice(0, 130) + '...' : text;
+          const text = desc.replace(/(<([^>]+)>)/gi, '');
+          return text.length > 130 ? text.slice(0,130) + '...' : text;
         },
         async fetchTrendingAnime() {
           const query = `
             query {
               Page(perPage: 12) {
                 media(sort: POPULARITY_DESC, type: ANIME) {
-                  id
-                  title {
-                    romaji
-                    english
-                  }
-                  coverImage {
-                    large
-                    color
-                  }
-                  description(asHtml: false)
-                  averageScore
-                  episodes
+                  id title { romaji english }
+                  coverImage { large color }
+                  description(asHtml:false)
+                  averageScore episodes
                 }
               }
-            }
-          `;
+            }`;
           try {
             const res = await fetch('https://graphql.anilist.co', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-              body: JSON.stringify({ query }),
+              method:'POST',
+              headers:{ 'Content-Type':'application/json','Accept':'application/json' },
+              body:JSON.stringify({ query })
             });
             const json = await res.json();
             this.trendingAnime = json.data.Page.media;
-          } catch (e) {
-            console.error('Failed to fetch anime:', e);
-          }
-        },
+          } catch(e) { console.error(e); }
+        }
       },
-      mounted() {
-        this.fetchTrendingAnime();
-      },
+      mounted() { this.fetchTrendingAnime(); }
     }).mount('#app');
   </script>
 </body>
