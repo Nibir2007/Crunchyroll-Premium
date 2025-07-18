@@ -7,8 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <style>
     :root {
       --orange: #f97316;
@@ -17,36 +16,14 @@
       --pink: #f472b6;
       --purple: #c084fc;
       --blue: #60a5fa;
+      --bg-gradient: linear-gradient(to bottom right, #ffedd5, #fef3c7, #fce7f3);
     }
-    * {
-      box-sizing: border-box;
-    }
-    body, html {
+    body {
       margin: 0;
-      padding: 0;
       font-family: 'Jost', sans-serif;
+      background: var(--bg-gradient);
       color: #1f2937;
       overflow-x: hidden;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      background: rgba(0,0,0,0.6);
-    }
-    video.bg-video {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
-      z-index: -2;
-      object-fit: cover;
-      filter: brightness(0.5);
     }
     header {
       background: linear-gradient(to right, var(--orange), var(--pink));
@@ -65,17 +42,21 @@
     .hero {
       text-align: center;
       padding: 60px 20px;
+      background: url('https://i.ibb.co/4F7v3Qz/anime-bg-loop.gif') center/cover no-repeat;
+      background-attachment: fixed;
+      color: white;
+      animation: fadeIn 2s ease-in-out;
     }
     .hero h1 {
-      font-size: 2.8rem;
-      color: var(--orange-dark);
+      font-size: 3rem;
+      color: #fff7ed;
       text-shadow: 2px 2px var(--yellow);
     }
     .hero p {
       max-width: 600px;
       margin: 20px auto;
-      color: #f1f5f9;
       font-size: 1.2rem;
+      color: #fef3c7;
     }
     .btn {
       display: inline-block;
@@ -88,10 +69,16 @@
       margin-top: 20px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.2);
       transition: all 0.4s ease;
+      animation: pulse 1.6s infinite;
     }
     .btn:hover {
       transform: scale(1.05);
       background: linear-gradient(135deg, var(--purple), var(--blue));
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 10px #f97316; }
+      50% { transform: scale(1.05); box-shadow: 0 0 25px #f97316; }
+      100% { transform: scale(1); box-shadow: 0 0 10px #f97316; }
     }
     .plans {
       display: flex;
@@ -99,7 +86,7 @@
       justify-content: center;
       gap: 25px;
       padding: 50px 20px;
-      background: rgba(255, 255, 255, 0.8);
+      background: linear-gradient(to bottom left, #fff7ed, #ffe4e6);
     }
     .card {
       background: white;
@@ -127,7 +114,7 @@
       font-size: 1rem;
     }
     .features {
-      background: rgba(255,255,255,0.85);
+      background: linear-gradient(to bottom right, #fefce8, #ede9fe);
       padding: 60px 20px;
       text-align: center;
     }
@@ -161,21 +148,17 @@
       margin-bottom: 10px;
     }
     .mascot {
-      text-align: center;
-      margin: 40px 0;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 120px;
+      z-index: 1000;
+      animation: floaty 4s ease-in-out infinite;
     }
-    .mascot img {
-      width: 160px;
-      animation: float 4s ease-in-out infinite, spinY 10s linear infinite;
-    }
-    @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0); }
-    }
-    @keyframes spinY {
-      0% { transform: rotateY(0deg); }
-      100% { transform: rotateY(360deg); }
+    @keyframes floaty {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
     }
     footer {
       background: linear-gradient(to right, var(--orange-dark), var(--pink));
@@ -186,33 +169,22 @@
     footer p {
       margin: 5px;
     }
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
-      .card { width: 90%; }
-      .feature { width: 90%; }
-      .features-grid, .plans { flex-direction: column; align-items: center; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <video autoplay muted loop class="bg-video">
-    <source src="https://cdn.pixabay.com/vimeo/567021173/anime-77571.mp4?width=640&hash=75b9c3991882c152d9d8c9c7dba2c342b006b1a7" type="video/mp4">
-  </video>
-
-  <header data-aos="fade-down">🍥 CrunchyStore - Your Ultimate Anime World!</header>
-
-  <section class="hero" data-aos="zoom-in">
+  <header>🍥 CrunchyStore - Your Ultimate Anime World!</header>
+  <section class="hero">
     <h1>UNLIMITED ANIME. 1 SUBSCRIPTION. 🔥</h1>
     <p>Watch simulcasts fresh from Japan, access exclusive anime, stream in HD and join the otaku revolution.</p>
-    <a href="#" class="btn"><i class="fas fa-shopping-cart"></i> Subscribe Now</a>
+    <a href="#plans" class="btn"><i class="fas fa-shopping-cart"></i> Buy Now</a>
   </section>
 
-  <div class="mascot" data-aos="fade-up">
-    <img src="https://cdn.pixabay.com/photo/2022/04/26/14/38/chibi-7158053_1280.png" alt="Anime Mascot">
-  </div>
-
-  <section class="plans" data-aos="fade-up">
-    <div class="card" data-aos="fade-right">
+  <section id="plans" class="plans" data-aos="fade-up">
+    <div class="card">
       <h2>Monthly Plan</h2>
       <p class="price">$6.99</p>
       <ul>
@@ -220,9 +192,9 @@
         <li>✨ Unlimited Streaming</li>
         <li>✨ HD Quality</li>
       </ul>
-      <a href="#" class="btn">Subscribe</a>
+      <a href="#" class="btn">Buy Now</a>
     </div>
-    <div class="card" data-aos="zoom-in">
+    <div class="card">
       <h2>Quarterly Plan</h2>
       <p class="price">$19.99</p>
       <ul>
@@ -230,9 +202,9 @@
         <li>✨ Offline Viewing</li>
         <li>✨ Priority Support</li>
       </ul>
-      <a href="#" class="btn">Subscribe</a>
+      <a href="#" class="btn">Buy Now</a>
     </div>
-    <div class="card" data-aos="fade-left">
+    <div class="card">
       <h2>Yearly Plan</h2>
       <p class="price">$69.99</p>
       <ul>
@@ -240,24 +212,24 @@
         <li>✨ Early Access</li>
         <li>✨ Special Anime Merch</li>
       </ul>
-      <a href="#" class="btn">Subscribe</a>
+      <a href="#" class="btn">Buy Now</a>
     </div>
   </section>
 
-  <section class="features" data-aos="fade-up">
+  <section class="features">
     <h2>Why Choose CrunchyStore?</h2>
     <div class="features-grid">
-      <div class="feature" data-aos="fade-up" data-aos-delay="100">
+      <div class="feature" data-aos="fade-up">
         <div class="feature-icon">⏱️</div>
         <h3>Fast Simulcasts</h3>
         <p>Watch episodes minutes after Japan airs them!</p>
       </div>
-      <div class="feature" data-aos="fade-up" data-aos-delay="200">
+      <div class="feature" data-aos="fade-up" data-aos-delay="100">
         <div class="feature-icon">📚</div>
         <h3>Massive Library</h3>
         <p>Thousands of titles — always something new to watch.</p>
       </div>
-      <div class="feature" data-aos="fade-up" data-aos-delay="300">
+      <div class="feature" data-aos="fade-up" data-aos-delay="200">
         <div class="feature-icon">🗣️</div>
         <h3>Dub + Sub</h3>
         <p>Your favorite anime in your language, your way.</p>
@@ -265,16 +237,16 @@
     </div>
   </section>
 
-  <footer data-aos="fade-in">
+  <footer>
     <p>Made with 💖 by anime fans. Join us, live anime.</p>
     <p>&copy; 2025 CrunchyStore. All rights reserved.</p>
   </footer>
 
+  <img src="https://i.ibb.co/7Gfr3s7/chibi-mascot.png" alt="Chibi Mascot" class="mascot">
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1200,
-    });
+    AOS.init();
   </script>
 </body>
-      </html>
-      
+</html>
