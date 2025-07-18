@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <style>
     :root {
       --orange: #f97316;
@@ -18,6 +19,9 @@
       --blue: #60a5fa;
       --bg-gradient: linear-gradient(to bottom right, #ffedd5, #fef3c7, #fce7f3);
     }
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Jost', sans-serif;
@@ -27,9 +31,9 @@
     }
     header {
       background: linear-gradient(to right, var(--orange), var(--pink));
-      padding: 30px 20px;
+      padding: 20px;
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: white;
       font-family: 'Orbitron', sans-serif;
       text-shadow: 2px 2px #00000020;
@@ -48,7 +52,7 @@
       animation: fadeIn 2s ease-in-out;
     }
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #fff7ed;
       text-shadow: 2px 2px var(--yellow);
     }
@@ -62,9 +66,9 @@
       display: inline-block;
       background: linear-gradient(135deg, var(--orange), var(--pink));
       color: white;
-      padding: 14px 28px;
+      padding: 12px 24px;
       border-radius: 20px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       text-decoration: none;
       margin-top: 20px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.2);
@@ -147,11 +151,42 @@
       color: var(--purple);
       margin-bottom: 10px;
     }
+    .carousel {
+      padding: 50px 0;
+      background: linear-gradient(to top, #fde68a, #fbcfe8);
+    }
+    .carousel h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--orange-dark);
+      margin-bottom: 30px;
+    }
+    .swiper-container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .swiper-slide {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .swiper-slide p {
+      padding: 10px;
+      font-weight: bold;
+    }
     .mascot {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      width: 120px;
+      width: 100px;
       z-index: 1000;
       animation: floaty 4s ease-in-out infinite;
     }
@@ -173,6 +208,15 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        font-size: 0.9rem;
+        padding: 10px 18px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -181,6 +225,30 @@
     <h1>UNLIMITED ANIME. 1 SUBSCRIPTION. 🔥</h1>
     <p>Watch simulcasts fresh from Japan, access exclusive anime, stream in HD and join the otaku revolution.</p>
     <a href="#plans" class="btn"><i class="fas fa-shopping-cart"></i> Buy Now</a>
+  </section>
+
+  <section class="carousel">
+    <h2>🔥 Trending Anime</h2>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="https://i.ibb.co/hVFKZRB/demon-slayer.jpg" alt="Demon Slayer">
+          <p>Demon Slayer</p>
+        </div>
+        <div class="swiper-slide">
+          <img src="https://i.ibb.co/wK4Wbbp/jujutsu-kaisen.jpg" alt="Jujutsu Kaisen">
+          <p>Jujutsu Kaisen</p>
+        </div>
+        <div class="swiper-slide">
+          <img src="https://i.ibb.co/VVCps5K/attack-titan.jpg" alt="Attack on Titan">
+          <p>Attack on Titan</p>
+        </div>
+        <div class="swiper-slide">
+          <img src="https://i.ibb.co/gstTfdV/one-piece.jpg" alt="One Piece">
+          <p>One Piece</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="plans" class="plans" data-aos="fade-up">
@@ -245,8 +313,26 @@
   <img src="https://i.ibb.co/7Gfr3s7/chibi-mascot.png" alt="Chibi Mascot" class="mascot">
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <script>
     AOS.init();
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1.5,
+      spaceBetween: 20,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2.5,
+        },
+        1024: {
+          slidesPerView: 3.5,
+        },
+      },
+    });
   </script>
 </body>
 </html>
