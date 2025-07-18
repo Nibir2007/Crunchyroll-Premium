@@ -50,7 +50,7 @@
     main {
       flex-grow: 1;
       max-width: 1200px;
-      margin: 30px auto 90px; /* bottom margin for cart */
+      margin: 30px auto 90px;
       padding: 0 15px;
       width: 100%;
       box-sizing: border-box;
@@ -188,105 +188,6 @@
       box-shadow: 0 0 25px #c084fc;
     }
 
-    /* Shopping Cart */
-    .cart-wrapper {
-      position: fixed;
-      right: 0;
-      top: 80px;
-      width: 320px;
-      max-height: 80vh;
-      background: white;
-      box-shadow: -6px 6px 20px rgba(0,0,0,0.15);
-      border-radius: 20px 0 0 20px;
-      padding: 20px;
-      overflow-y: auto;
-      z-index: 1000;
-      font-family: 'Jost', sans-serif;
-      user-select: none;
-      box-sizing: border-box;
-    }
-    .cart-wrapper h3 {
-      margin-top: 0;
-      color: #f472b6;
-      font-weight: 700;
-      font-size: 1.6rem;
-      margin-bottom: 15px;
-      text-align: center;
-      font-family: 'Orbitron', sans-serif;
-      text-shadow: 1px 1px #fff;
-    }
-    .cart-items {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-      padding: 10px 0;
-    }
-    .cart-item:last-child {
-      border-bottom: none;
-    }
-    .cart-item-info {
-      flex-grow: 1;
-      margin-right: 10px;
-    }
-    .cart-item-title {
-      font-weight: 700;
-      color: #c084fc;
-      font-size: 1rem;
-      margin-bottom: 3px;
-    }
-    .cart-item-price {
-      color: #f97316;
-      font-weight: 700;
-    }
-    .cart-item-remove {
-      background: transparent;
-      border: none;
-      color: #f472b6;
-      font-size: 1.2rem;
-      cursor: pointer;
-      user-select: none;
-      transition: color 0.2s ease;
-    }
-    .cart-item-remove:hover {
-      color: #f97316;
-    }
-    .cart-total {
-      margin-top: 15px;
-      font-weight: 900;
-      font-size: 1.4rem;
-      text-align: center;
-      color: #f97316;
-      border-top: 2px solid #f472b6;
-      padding-top: 10px;
-      user-select: none;
-    }
-    .checkout-btn {
-      background: linear-gradient(135deg, #c084fc, #f472b6);
-      border: none;
-      color: white;
-      padding: 15px 30px;
-      width: 100%;
-      font-size: 1.2rem;
-      font-weight: 700;
-      border-radius: 30px;
-      margin-top: 15px;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.3s ease, transform 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .checkout-btn:hover {
-      background: linear-gradient(135deg, #f97316, #f43f5e);
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #f97316;
-    }
-
     /* Contact Me Button */
     #contact-btn {
       position: fixed;
@@ -316,17 +217,6 @@
 
     /* Responsive */
 
-    @media (max-width: 960px) {
-      .cart-wrapper {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        max-height: 40vh;
-        border-radius: 20px 20px 0 0;
-        padding: 15px 10px;
-      }
-    }
     @media (max-width: 480px) {
       header {
         font-size: 2rem;
@@ -374,26 +264,10 @@
           </ul>
           <div class="product-validity">Validity: {{ product.validity }}</div>
           <div class="product-price">{{ product.price.toLocaleString('en-IN') }} ৳</div>
-          <button class="btn-buy" @click="addToCart(product)">Buy Now</button>
+          <button class="btn-buy" @click="buyNow(product)">Buy Now</button>
         </article>
       </section>
     </main>
-
-    <!-- Shopping Cart -->
-    <aside class="cart-wrapper" aria-label="Shopping cart" v-if="cart.length > 0">
-      <h3>Your Cart</h3>
-      <div class="cart-items" role="list">
-        <div class="cart-item" v-for="(item, index) in cart" :key="item.id" role="listitem">
-          <div class="cart-item-info">
-            <div class="cart-item-title">{{ item.plan }} Plan</div>
-            <div class="cart-item-price">{{ item.price.toLocaleString('en-IN') }} ৳</div>
-          </div>
-          <button class="cart-item-remove" @click="removeFromCart(index)" aria-label="Remove from cart">&times;</button>
-        </div>
-      </div>
-      <div class="cart-total">Total: {{ cartTotal.toLocaleString('en-IN') }} ৳</div>
-      <button class="checkout-btn" @click="checkout">Checkout</button>
-    </aside>
 
     <button id="contact-btn" @click="scrollToContact">Contact Me</button>
 
@@ -474,29 +348,11 @@
               ],
             }
           ],
-          cart: []
         };
       },
-      computed: {
-        cartTotal() {
-          return this.cart.reduce((sum, item) => sum + item.price, 0);
-        }
-      },
       methods: {
-        addToCart(product) {
-          this.cart.push(product);
-          alert(`✅ "${product.plan}" added to cart!`);
-        },
-        removeFromCart(index) {
-          this.cart.splice(index, 1);
-        },
-        checkout() {
-          if(this.cart.length === 0) {
-            alert('Your cart is empty!');
-            return;
-          }
-          alert(`🎉 Thank you for your purchase!\nTotal: ₹${this.cartTotal.toLocaleString('en-IN')}\nWe will contact you with account details.`);
-          this.cart = [];
+        buyNow(product) {
+          alert(`Thank you for choosing the "${product.plan}" plan.\nPlease contact us to complete your purchase.`);
         },
         scrollToContact() {
           const contactSection = document.getElementById('contact');
